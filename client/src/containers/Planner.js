@@ -2,8 +2,9 @@ import React from 'react';
 import '../App.css';
 
 import Header from '../components/Header';
-// import TaskForm from '../components/TaskForm';
-// import Tasks from '../components/Tasks';
+import About from '../components/About';
+// import TaskForm from '../containers/TaskForm';
+// import Tasks from '../containers/Tasks';
 // import Footer from '../components/Footer';
 
 class Planner extends React.Component {

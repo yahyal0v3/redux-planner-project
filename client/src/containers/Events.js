@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import EventCard from '../components/EventCard';
 // import { } from '../actions/eventss'
 
-class Events extends Component {
+export default class Events extends Component {
 
   render() {
     return (
@@ -19,4 +19,4 @@ class Events extends Component {
 
 // const mapStateToProps = ({events}) => ({events})
 
-export default connect(mapStateToProps)(Events);
+// export default connect(mapStateToProps)(Events);
