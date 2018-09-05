@@ -20,9 +20,10 @@ Components
 Event Form
 Task Form
 Events
+Planner
+Home
 
     Stateless (5)
-Home
 About
 EventCard
 TaskCard
@@ -35,12 +36,12 @@ Paths (3)
     Home
 About Component
 Event Form Component (Display inputs one at a time?)
-Events Component
+Events Component (Limit 3?)
 
     User's Events
 Events Component
 
-        Event Show
+        Planner
     Task Form Component
-    To Dos Component
+    Tasks Component
 
