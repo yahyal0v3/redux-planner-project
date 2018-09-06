@@ -30,6 +30,8 @@ gem 'active_model_serializers'
 
 gem 'foreman', '~> 0.82.0'
 
+gem 'devise'
+
 gem 'bootsnap'
 
 gem 'rack-cors'

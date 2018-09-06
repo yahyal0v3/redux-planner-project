@@ -2,8 +2,8 @@ import React from 'react';
 import '../App.css';
 
 import About from '../components/About';
-// import EventForm from '../components/EventForm';
-// import Events from '../components/Events';
+import EventForm from './EventForm';
+// import Events from './Events';
 // import Footer from '../components/Footer';
 
 class Home extends React.Component {
@@ -13,8 +13,8 @@ class Home extends React.Component {
       return (
         <div className="Home">
           <About />
-          {/* <EventForm />
-          <Events />
+          <EventForm />
+          {/*<Events />
           <Footer/> */}
         </div>
       );
