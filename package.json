@@ -1,5 +1,7 @@
 {
   "name": "redux-planner-project",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "cuid": "^2.1.4"
+  }
 }
