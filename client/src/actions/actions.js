@@ -1,36 +1,25 @@
 import fetch from 'isomorphic-fetch'
 
-export function createComment(data) {
-    console.log(JSON.stringify(data))
-      return fetch('http://localhost:3001/comments', {
-          method: 'POST',
-          mode: 'CORS',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-      }).then(res => {
-          return res;
-      }).catch(err => err);
-  }
 
-export const createEvent = eventData => {
+export const createEvent = data => {
     return fetch('http://localhost:3001/events', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(eventData)
-    })
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify(data)
+    }).then(resp => {
+        debugger
+        resp.json()})
+    .then(events => console.log(events))
 
-    // return {
-    //     type: 'CREATE_EVENT',
-    //     event
-    // }
 }
 
 export const createTask = task => {
     return {
         type: 'CREATE_TASK',
-        event
+        task
     }
 }
 
@@ -44,7 +33,7 @@ export const deleteEvent = event => {
 export const deleteTask = task => {
     return {
         type: 'DELETE_TASK',
-        event
+        task
     }
 }
 

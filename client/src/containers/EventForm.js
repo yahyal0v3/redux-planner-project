@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { createEvent } from '../actions/actions'
 
 export default class EventForm extends Component {
     
@@ -21,9 +22,16 @@ export default class EventForm extends Component {
         })
     }
 
+    handleSubmit = event => {
+        event.preventDefault()
+        let stateCopy = {...this.state}
+        delete stateCopy.slide
+        createEvent(stateCopy)
+    } 
+
     render() {
 
-        function renderForm(state, handleChange, handleKeyPress) {
+        function renderForm(state, handleChange, handleKeyPress, handleSubmit) {
             if (state.slide === 1) { 
                 return (
                     <div>
@@ -52,7 +60,7 @@ export default class EventForm extends Component {
                 return (
                     <div>
                         <h1>Is This Your Event?</h1>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <label for="deadline">Deadline</label>
                             <input type="datetime-local" name="deadline" value={state.deadline} onChange={handleChange} />
                             <label for="title">Title</label>
@@ -68,7 +76,7 @@ export default class EventForm extends Component {
 
         return (
             <div>
-              {renderForm(this.state, this.handleChange, this.handleKeyPress)}
+              {renderForm(this.state, this.handleChange, this.handleKeyPress, this.handleSubmit)}
             </div>
         )
     }
