@@ -3,7 +3,7 @@ import '../App.css';
 
 import About from '../components/About';
 import EventForm from './EventForm';
-// import Events from './Events';
+import Events from './Events';
 // import Footer from '../components/Footer';
 
 class Home extends React.Component {
@@ -14,8 +14,8 @@ class Home extends React.Component {
         <div className="Home">
           <About />
           <EventForm />
-          {/*<Events />
-          <Footer/> */}
+          <Events />
+          {/* <Footer/> */} 
         </div>
       );
     }

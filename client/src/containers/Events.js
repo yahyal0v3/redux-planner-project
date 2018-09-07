@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-// import { connect } from 'react-redux'
-// import EventCard from '../components/EventCard'
-// import { } from '../actions/events'
+import { connect } from 'react-redux'
+import EventCard from '../components/EventCard'
+import { fetchEvents } from '../actions/actions'
 
-export default class Events extends Component {
+class Events extends Component {
 
   componentDidMount() {
+    debugger
     this.props.fetchEvents()
   }
 

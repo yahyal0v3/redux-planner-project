@@ -18,11 +18,27 @@ export function createEvent(data) {
 
 export function fetchEvents() {
     return (dispatch) => {
+        dispatch({ type: 'LOAD_EVENTS_REQUEST' })
+        debugger
         fetch('http://localhost:3001/events')
-        .then((resp) => resp.json())
-        .then((events) => dispatch({type: "ADD_EVENTS", events}))
-      }
-  }
+        .then(resp => {
+            console.log(resp.status)
+            console.log(resp.statusText)
+            resp.json()})
+        .then(events => dispatch({type: "ADD_EVENTS", events}))
+        .catch(error => console.log(error))
+    }
+}
+
+export function fetchEventShow(id) {
+    return (dispatch) => {
+      dispatch({ type: 'LOAD_EVENT_SHOW_REQUEST' })
+      return fetch(`http://localhost:3001/events/${id}`)
+        .then(response => response.json())
+        .then(events => dispatch({ type: 'SHOW_EVENT', events}))
+    }
+}
+
 
 export const createTask = task => {
     return {
@@ -42,23 +58,5 @@ export const deleteTask = task => {
     return {
         type: 'DELETE_TASK',
         task
-    }
-}
-
-export function fetchEvents() {
-    return (dispatch) => {
-      dispatch({ type: 'LOAD_EVENTS_REQUEST' })
-      return fetch('http://localhost:3001/events')
-        .then(response => response.json())
-        .then(events => dispatch({ type: 'ADD_EVENTS', events}))
-    }
-}
-
-export function fetchEventShow(id) {
-    return (dispatch) => {
-      dispatch({ type: 'LOAD_EVENT_SHOW_REQUEST' })
-      return fetch(`http://localhost:3001/events/${id}`)
-        .then(response => response.json())
-        .then(events => dispatch({ type: 'SHOW_EVENT', events}))
     }
 }

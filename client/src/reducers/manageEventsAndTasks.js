@@ -29,14 +29,16 @@ function tasksReducer(state = [], action) {
   }
 }
  
-function eventsReducer(state = [], action) {
+function eventsReducer(state = {
+  events: [],
+  loading: false
+}, action) {
   switch (action.type) {
+    case "LOAD_EVENTS_REQUEST":
+      return {...state, loading: true} 
     case "ADD_EVENTS":
-      return action.events
+      return {events: action.events, loading: false}
     case "CREATE_EVENT":
-      // const event = {
-      //     id: cuidFn(), title: action.title, deadline: action.datetime, description: action.text
-      //   }
       action.event['id'] = cuidFn()
       return [...state, action.event]
 
