@@ -75,7 +75,7 @@ export default class EventForm extends Component {
         }
 
         return (
-            <div>
+            <div class="section">
               {renderForm(this.state, this.handleChange, this.handleKeyPress, this.handleSubmit)}
             </div>
         )

@@ -5,7 +5,7 @@ class EventsController < ApplicationController
     end
 
     def index
-        binding.pry
+        #binding.pry
         events = Event.all
         render json: events
     end

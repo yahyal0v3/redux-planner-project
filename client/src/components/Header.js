@@ -1,19 +1,14 @@
 import React, {Component} from 'react'
-import { NavLink } from 'react-router-dom'
+import Navbar from './Navbar'
 
 export default class Header extends Component {
     render() {
         return (
           <div id="header">
-            <nav>
-              <ul>
-                <li><NavLink className="nav_link" to="/"> Home </NavLink></li>
-                <li><NavLink className="nav_link" to="/events"> Events </NavLink></li>
-              </ul>
-            </nav>
+            <Navbar />
 
-            <div>
-              <img src="event.jpg" alt="" />
+            <div id="headerImg">
+              <img src="events.png" alt="" />
               <span>Be a guest at your next party.</span>
             </div>
           </div>
