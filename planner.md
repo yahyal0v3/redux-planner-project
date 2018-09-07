@@ -1,6 +1,5 @@
 Models
 
--User has many Events, has many To Dos through Events
 -Event has many To Dos
 -Task belongs to an Event
 
@@ -38,7 +37,7 @@ About Component
 Event Form Component (Display inputs one at a time?)
 Events Component (Limit 3?)
 
-    User's Events
+    Events
 Events Component
 
         Planner

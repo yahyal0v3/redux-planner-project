@@ -31,6 +31,8 @@ function tasksReducer(state = [], action) {
  
 function eventsReducer(state = [], action) {
   switch (action.type) {
+    case "ADD_EVENTS":
+      return action.events
     case "CREATE_EVENT":
       // const event = {
       //     id: cuidFn(), title: action.title, deadline: action.datetime, description: action.text

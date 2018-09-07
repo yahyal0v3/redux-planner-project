@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
 
-export const createEvent = data => {
+export function createEvent(data) {
     return fetch('http://localhost:3001/events', {
         method: 'POST',
         headers: {
@@ -15,6 +15,14 @@ export const createEvent = data => {
     .then(events => console.log(events))
 
 }
+
+export function fetchEvents() {
+    return (dispatch) => {
+        fetch('http://localhost:3001/events')
+        .then((resp) => resp.json())
+        .then((events) => dispatch({type: "ADD_EVENTS", events}))
+      }
+  }
 
 export const createTask = task => {
     return {
