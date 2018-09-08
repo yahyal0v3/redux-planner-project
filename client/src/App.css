@@ -27,7 +27,7 @@
   to { transform: rotate(360deg); }
 }
 
-/* App Styles */
+/* App Shared Styles */
 
 html {
 	font-family: 'Times New Roman', Times, serif;
@@ -35,21 +35,16 @@ html {
 
 #navbar {
 	background-attachment: fixed;
-	background-color: #044163;
-	padding: 2em;
+	background-color:white;
 	top: 0px;
 	position: fixed;
-	width: 100%;
-}
-
-#navbar nav {
-	width: 40%;
-	float: right;
+  width: 100%;
 }
 
 #navbar h1 {
-  width: 25%;
-  color: white;
+  width: 100%;
+  color: #044163;
+  font-size: 3em;
 }
 
 nav ul {
@@ -58,15 +53,24 @@ nav ul {
 
 nav li {
 	flex-flow: row wrap;
-	flex: 1 1 auto;
-	color: white;
+  flex: 1 1 auto;
+  list-style-type: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: #044163;
+}
+
+nav a:hover {
+  color: orangered;
 }
 
 div#headerImg img {
 	width: 100%;
 }
 
-div#headerImg span {
+div#headerImg p {
 	position: absolute;
 	top: 400px;
 	left: 560px;
@@ -76,19 +80,62 @@ div#headerImg span {
 
 /* Homepage Styles */
 
-div.section {
+div.row {
 	width: 100%;
 }
 
-div.section section {
+div.row section {
 	margin: 0px auto 0px auto;
 	padding: 50px;
 	min-width: 450px;
 	max-width: 800px;
 }
 
-div.section h2 {
+div.row h2 {
 	font-size: 2em;
 	color: #08235a;
 	line-height: 2.3em;
+}
+
+div#secondRow {
+	background-color: #f08d4a;
+	color: white;
+}
+
+div#secondRow div {
+	display: flex;
+}
+
+div#secondRow figure {
+	flex-flow: row wrap;
+	flex: 1 1 auto;
+	color: white;
+}
+
+div#secondRow figcaption {
+  font-size: 1.3em;
+  padding-top: 15px;
+}
+
+div#thirdRow {
+	background-color: #055471;
+	color: white;
+}
+
+div.formFragment {
+  font-size: 2em;
+}
+
+div#fullForm form  { 
+  display: table;   
+  width: 100%;   
+}
+
+div#fullForm p { 
+  display: table-row;  
+}
+
+div#fullForm label {
+  font-size: 1.3em;
+  padding-right: 10px;
 }
