@@ -4,7 +4,6 @@ import '../App.css';
 import About from '../components/About';
 import WhatToDo from '../components/WhatToDo';
 import EventForm from './EventForm';
-// import Footer from '../components/Footer';
 
 class Home extends React.Component {
 
@@ -15,9 +14,8 @@ class Home extends React.Component {
           <About />
           <WhatToDo />
           <EventForm />
-          {/* <Footer/> */} 
         </div>
-      );
+      )
     }
   }
 

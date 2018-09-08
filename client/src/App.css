@@ -39,6 +39,7 @@ html {
 	top: 0px;
 	position: fixed;
   width: 100%;
+  border-bottom: 1px solid rgba(51, 194, 251, 0.466);
 }
 
 #navbar h1 {
@@ -58,8 +59,8 @@ nav li {
 }
 
 nav a {
-  text-decoration: none;
   color: #044163;
+  text-decoration: none;
 }
 
 nav a:hover {
@@ -78,6 +79,31 @@ div#headerImg p {
 	font: 2em/0em 'Century Gothic', sans-serif;
 } 
 
+#footer {
+	background-color: #08235a;
+	color: white;
+	width: 100%;
+	padding: 20px 0px;
+}
+
+#footer a {
+  color: white;
+  text-decoration: none;
+}
+
+#footer a:hover {
+  text-decoration: underline;
+}
+
+#footer h3 {
+  margin-bottom: 100px;
+}
+
+#footer p {
+  position: relative;
+  left: 530px;
+}
+
 /* Homepage Styles */
 
 div.row {
@@ -93,8 +119,11 @@ div.row section {
 
 div.row h2 {
 	font-size: 2em;
-	color: #08235a;
 	line-height: 2.3em;
+}
+
+div#firstRow h2, div#secondRow h2 {
+  color: #08235a;
 }
 
 div#secondRow {
@@ -122,8 +151,15 @@ div#thirdRow {
 	color: white;
 }
 
-div.formFragment {
-  font-size: 2em;
+div#fullForm input[type=submit] {
+  cursor: pointer;
+  background-color: rgb(252, 206, 145);
+  border: 2px solid rgb(252, 206, 145);
+  border-radius: 25px
+}
+
+div#fullForm h2 {
+  color: rgb(252, 206, 145);
 }
 
 div#fullForm form  { 

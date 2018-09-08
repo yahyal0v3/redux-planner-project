@@ -35,7 +35,7 @@ export default class EventForm extends Component {
             if (state.slide === 1) { 
                 return (
                     <div className="formFragment">
-                        <label for="deadline">Make a Deadline</label><br /><br />
+                        <h2>Make a Deadline</h2>
                         <input type="datetime-local" name="deadline" value={state.deadline} onKeyPress={handleKeyPress} onChange={handleChange} />       
                     </div>
                 )
@@ -43,7 +43,7 @@ export default class EventForm extends Component {
             } else if (state.slide === 2) {
                 return (
                     <div className="formFragment">
-                        <label for="title">Create an Event Title</label><br /><br />
+                        <h2>Create an Event Title</h2>
                         <input type="text" name="title" value={state.title} onKeyPress={handleKeyPress} onChange={handleChange} />       
                     </div>
                 )
@@ -51,7 +51,7 @@ export default class EventForm extends Component {
             } else if (state.slide === 3) {
                 return (
                     <div className="formFragment">
-                        <label for="description">Describe the Occasion</label><br /><br />
+                        <h2>Describe the Occasion</h2>
                         <textarea name="description" value={state.description} onKeyPress={handleKeyPress} onChange={handleChange} rows="6" cols="50"></textarea>       
                     </div>
                 )
@@ -59,7 +59,7 @@ export default class EventForm extends Component {
             } else if (state.slide === 4) {
                 return (
                     <div id="fullForm">
-                        <h1>Is This Your Event?</h1><br /><br />
+                        <h2>Is This Your Event?</h2>
                         <form onSubmit={handleSubmit}>
                           <p>
                             <label for="deadline">Deadline</label>

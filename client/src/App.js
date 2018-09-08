@@ -6,6 +6,7 @@ import Header from './components/Header'
 import Home from './containers/Home'
 import Events from './containers/Events'
 import Planner from './containers/Planner'
+import Footer from './components/Footer'
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/events" component={Events}/>
           <Route exact path="/party-planner" component={Planner}/>
+          <Footer />
         </div>
       </Router>
     );
