@@ -39,6 +39,12 @@ export function fetchEventShow(id) {
     }
 }
 
+export const createTimer = deadline => {
+    return {
+        type: 'CREATE_TIMER',
+        deadline
+    }
+}
 
 export const createTask = task => {
     return {

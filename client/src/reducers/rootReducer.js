@@ -4,7 +4,8 @@ export const cuidFn = cuid
  
 const rootReducer = combineReducers({
   events: eventsReducer,
-  tasks: tasksReducer
+  tasks: tasksReducer,
+  timers: timerReducer
 })
  
 export default rootReducer
@@ -51,5 +52,26 @@ function eventsReducer(state = {
  
     default:
       return state
+  }
+}
+
+
+function timerReducer(state = {
+  countdown: ""
+}, action) {
+  switch (action.type) {
+      case "CREATE_TIMER":
+          let now = new Date().getTime()
+          let distance = action.deadline - now
+          
+          let days = Math.floor(distance / (1000 * 60 * 60 * 24))
+          let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+          let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+          let seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+          let countdown = days + "d " + hours + "h " + minutes + "m " + seconds + "s "
+          return {countdown: countdown}
+      default:
+          return state
   }
 }

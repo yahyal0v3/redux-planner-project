@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WhatToDo = () => {
+const WhatToDo = props => {
     return (
         <div className="row" id="secondRow">
           <section>
@@ -15,7 +15,8 @@ const WhatToDo = () => {
                     <figcaption>Plan it Out</figcaption>
                 </figure>
                 <figure>
-                    <img src="photo.jpg" alt="" />
+                    {/* <span>{this.props.countdown}</span> */}
+                    <span>16d 12h 10m 9s</span>
                     <figcaption>Meet the Deadline</figcaption>
                 </figure>
             </div>

@@ -16,6 +16,7 @@ class Events extends Component {
         <h2>Events</h2>
         <section>
               {/* {this.props.events.map(event => <EventCard event={event} />)} */}
+              <EventCard />
         </section>
       </div>
     )
