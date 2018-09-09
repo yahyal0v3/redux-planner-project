@@ -1,49 +1,54 @@
 import React, {Component} from 'react';
 
-import { createTimer } from '../actions/actions'
-import { connect } from 'react-redux'
-
 import About from '../components/About';
 import WhatToDo from '../components/WhatToDo';
 import EventForm from './EventForm';
 
 class Home extends Component {
-
-  deadlineSample = () => {
-    let today = new Date()
-    let inTwoDays = new Date()
-    inTwoDays.setDate(today.getDate()+2)
-    debugger
-    return inTwoDays.getTime()
+  state = {
+    countdown: ""
   }
 
   componentDidMount() {
-    debugger
-    this.interval = setInterval(this.props.createTimer(), 1000)
-  }
+      let today = new Date()
+      let inTwoDays = new Date()
+      debugger
+      inTwoDays.setDate(today.getDate()+2)
+      this.interval = setInterval(this.timerCountdown(inTwoDays.getTime()), 1000)
+    }
 
   componentWillUnmount() {
-    clearInterval(this.interval)
+      clearInterval(this.interval)
   }
 
-   render() {
-
-      return (
-        <div className="Home">
-          <About />
-          <WhatToDo countdown={this.props.countdown}/>
-          <EventForm />
-        </div>
-      )
-    }
+  timerCountdown = (deadline) => {
+      let now = new Date()
+      let distance = deadline - now
+      
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24))
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000)
+      
+      let countdown = days + "d " + hours + "h " + minutes + "m " + seconds + "s "
+      debugger
+      this.setState({
+          countdown: countdown
+      })
+      
   }
 
-const mapStateToProps = ({countdown}) => ({countdown})
+  render() {
 
-const mapDispatchToProps = dispatch => {
-  return {
-    createTimer: () => dispatch(createTimer(this.deadlineSample)) 
+    return (
+      <div className="Home">
+        <About />
+        <WhatToDo countdown={this.state.countdown} />
+        <EventForm />
+      </div>
+    )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+export default Home

@@ -1,10 +1,11 @@
 import React from 'react'
 
 const WhatToDo = props => {
+
     return (
         <div className="row" id="secondRow">
-          <section>
-          <h2>What To Do</h2>
+            <section>
+            <h2>What To Do</h2>
             <div>
                 <figure>
                     <img src="http://i66.tinypic.com/1555509.jpg" alt="" />
@@ -15,15 +16,14 @@ const WhatToDo = props => {
                     <figcaption>Plan it Out</figcaption>
                 </figure>
                 <figure>
-                    {/* <span>{this.props.countdown}</span> */}
-                    <span>16d 12h 10m 9s</span>
+                    <span>{this.props.countdown}</span>
                     <figcaption>Meet the Deadline</figcaption>
                 </figure>
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
             ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
             laboris nisi ut aliquip ex ea commodo consequat.</p>
-		  </section>
+            </section>
         </div>
     )
 }

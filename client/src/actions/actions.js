@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 
 
 export function createEvent(data) {
+    debugger
     return fetch('http://localhost:3001/events', {
         method: 'POST',
         headers: {
@@ -36,13 +37,6 @@ export function fetchEventShow(id) {
       return fetch(`http://localhost:3001/events/${id}`)
         .then(response => response.json())
         .then(events => dispatch({ type: 'SHOW_EVENT', events}))
-    }
-}
-
-export const createTimer = deadline => {
-    return {
-        type: 'CREATE_TIMER',
-        deadline
     }
 }
 
