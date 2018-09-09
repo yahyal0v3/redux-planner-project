@@ -33,6 +33,10 @@ html {
 	font-family: 'Times New Roman', Times, serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 #navbar {
 	background-attachment: fixed;
 	background-color:white;
@@ -60,7 +64,6 @@ nav li {
 
 nav a {
   color: #044163;
-  text-decoration: none;
 }
 
 nav a:hover {
@@ -79,6 +82,13 @@ div#headerImg p {
 	font: 2em/0em 'Century Gothic', sans-serif;
 } 
 
+input[type=submit], button {
+  cursor: pointer;
+  background-color: rgb(252, 206, 145);
+  border: 2px solid rgb(252, 206, 145);
+  border-radius: 5px
+}
+
 #footer {
 	background-color: #08235a;
 	color: white;
@@ -88,7 +98,6 @@ div#headerImg p {
 
 #footer a {
   color: white;
-  text-decoration: none;
 }
 
 #footer a:hover {
@@ -141,6 +150,13 @@ div#secondRow figure {
 	color: white;
 }
 
+div#secondRow figure span {
+  color: #08235a;
+  font-weight: bold;
+  font-size: 2.5em;
+  line-height: 2em;
+}
+
 div#secondRow figcaption {
   font-size: 1.3em;
   padding-top: 15px;
@@ -149,13 +165,6 @@ div#secondRow figcaption {
 div#thirdRow {
 	background-color: #055471;
 	color: white;
-}
-
-div#fullForm input[type=submit] {
-  cursor: pointer;
-  background-color: rgb(252, 206, 145);
-  border: 2px solid rgb(252, 206, 145);
-  border-radius: 25px
 }
 
 div#fullForm h2 {
@@ -174,4 +183,37 @@ div#fullForm p {
 div#fullForm label {
   font-size: 1.3em;
   padding-right: 10px;
+}
+
+/* Events Styles */
+
+section#events {
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+div.container {
+  border: 3px outset rgba(51, 194, 251, 0.466);
+  flex-basis: 400px;
+  margin: 10px;
+  padding: 1.5em;
+}
+
+div.container h1 {
+  color: #f08d4a;
+}
+
+div.container h3, div.container h3 a {
+  color: #08235a;
+}
+
+div.container a:hover {
+  border: 2px solid #08235a;
+  background-color: #08235a;
+  color: white;
+}
+
+div.container button {
+  float: right;
 }
