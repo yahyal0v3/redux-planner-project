@@ -16,7 +16,7 @@ const WhatToDo = props => {
                     <figcaption>Plan it Out</figcaption>
                 </figure>
                 <figure>
-                    <span>{this.props.countdown}</span>
+                    <span>{props.countdown}</span>
                     <figcaption>Meet the Deadline</figcaption>
                 </figure>
             </div>

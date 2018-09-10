@@ -5,25 +5,31 @@ import WhatToDo from '../components/WhatToDo';
 import EventForm from './EventForm';
 
 class Home extends Component {
+  
   state = {
     countdown: ""
   }
 
+  deadlineSample = () => {
+    let today = new Date()
+    let inTwoDays = new Date()
+    inTwoDays.setDate(today.getDate()+2)
+
+    this.deadline = inTwoDays.getTime()
+  }
+
   componentDidMount() {
-      let today = new Date()
-      let inTwoDays = new Date()
-      debugger
-      inTwoDays.setDate(today.getDate()+2)
-      this.interval = setInterval(this.timerCountdown(inTwoDays.getTime()), 1000)
-    }
+    this.deadlineSample()
+    this.interval = setInterval(this.timerCountdown, 1000)
+  }
 
   componentWillUnmount() {
       clearInterval(this.interval)
   }
 
-  timerCountdown = (deadline) => {
+  timerCountdown = () => {
       let now = new Date()
-      let distance = deadline - now
+      let distance = this.deadline - now
       
       let days = Math.floor(distance / (1000 * 60 * 60 * 24))
       let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
@@ -31,7 +37,6 @@ class Home extends Component {
       let seconds = Math.floor((distance % (1000 * 60)) / 1000)
       
       let countdown = days + "d " + hours + "h " + minutes + "m " + seconds + "s "
-      debugger
       this.setState({
           countdown: countdown
       })
