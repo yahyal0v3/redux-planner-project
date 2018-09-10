@@ -5,29 +5,33 @@ export function createEvent(data) {
     debugger
     return fetch('http://localhost:3001/events', {
         method: 'POST',
+        credentials: "same-origin",
+        mode: 'no-cors',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
+        },
         body: JSON.stringify(data)
     }).then(resp => {
         debugger
         resp.json()})
-    .then(events => console.log(events))
+    .then(event => console.log(event))
 
 }
 
 export function fetchEvents() {
+    // debugger
     return (dispatch) => {
         dispatch({ type: 'LOAD_EVENTS_REQUEST' })
-        debugger
-        fetch('http://localhost:3001/events')
+        return fetch('http://localhost:3001/events')
         .then(resp => {
             console.log(resp.status)
             console.log(resp.statusText)
+            // debugger
             resp.json()})
-        .then(events => dispatch({type: "ADD_EVENTS", events}))
-        .catch(error => console.log(error))
+        .then(events => dispatch({type: "ADD_EVENTS", payload: events}))
+        .catch(error => {
+            // debugger
+            console.log(error)})
     }
 }
 

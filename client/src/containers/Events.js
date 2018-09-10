@@ -23,7 +23,12 @@ class Events extends Component {
   }
 }
 
-const mapStateToProps = ({events}) => ({events})
+const mapStateToProps = state => {
+  debugger
+  return {
+    events: state.events
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
