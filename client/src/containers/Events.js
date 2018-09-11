@@ -6,7 +6,6 @@ import { fetchEvents } from '../actions/actions'
 class Events extends Component {
 
   componentDidMount() {
-    debugger
     this.props.fetchEvents()
   }
 
@@ -15,8 +14,7 @@ class Events extends Component {
       <div>
         <h2>Events</h2>
         <section id="events">
-              {/* {this.props.events.map(event => <EventCard event={event} />)} */}
-              <EventCard />
+            {this.props.events.map(event => <EventCard event={event} />)}
         </section>
       </div>
     )
@@ -24,9 +22,8 @@ class Events extends Component {
 }
 
 const mapStateToProps = state => {
-  debugger
   return {
-    events: state.events
+    events: state.eventsState.events,
   }
 }
 

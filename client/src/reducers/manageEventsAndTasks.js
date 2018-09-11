@@ -3,8 +3,8 @@ import cuid from 'cuid'
 export const cuidFn = cuid
  
 const rootReducer = combineReducers({
-  events: eventsReducer,
-  tasks: tasksReducer,
+  eventsState: eventsReducer,
+  tasksState: tasksReducer,
 })
  
 export default rootReducer
@@ -30,7 +30,11 @@ function tasksReducer(state = [], action) {
 }
  
 function eventsReducer(state = {
-  events: [],
+  events: [
+    {countdown: "", deadline: "2018-09-14T12:59", title: "Surprise Party", description: "Ut enim ad minim veniam, quis nostrud exercitation… laboris nisi ut aliquip ex ea commodo consequat."},
+    {countdown: "", deadline: "2018-09-25T18:59", title: "Graduation", description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
+    {countdown: "", deadline: "2018-09-11T15:00", title: "CockTail Party", description: "Duis aute irure dolor in reprehenderit in voluptat…elit esse cillum dolore eu fugiat nulla pariatur."}
+  ],
   loading: false
 }, action) {
   switch (action.type) {
@@ -38,13 +42,12 @@ function eventsReducer(state = {
       return {...state, loading: true} 
     case "ADD_EVENTS":
       return {events: action.events, loading: false}
+      
     case "CREATE_EVENT":
       action.event['id'] = cuidFn()
       return [...state, action.event]
-
     case "SHOW_EVENT":
       return state.find(event => event.id === action.id)
- 
     case "DELETE_EVENT":
         state.filter(event => event.id !== action.id)
         return state

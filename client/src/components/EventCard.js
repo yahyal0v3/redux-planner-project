@@ -1,40 +1,40 @@
-import React from 'react'
+import React, {Component} from 'react'
+import { countdown } from '../actions/actions'
 
-const EventCard = ({event}) => {
-    return (
-        <React.Fragment>
-            {/* <h1>{event.deadline}</h1>
-            <h3>{event.title}</h3>
-            <p>{event.description}</p> */}
+class EventCard extends Component {
+
+    state = {
+        countdown: ""
+    }
+
+    componentDidMount() {
+        this.interval = setInterval(this.countdownTimer, 1000)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval)
+    }
+
+    countdownTimer = () => {
+        debugger
+        this.setState({
+            countdown: countdown(this.props.event.deadline)
+        })
+    }
+
+    render() {
+        debugger
+        return (
             <div className="container">
-                <h1>16d 12h 10m 9s</h1>
-                <h3><a href="#">Title</a></h3>
-                <h3>Deadline</h3>        
-                <p>Description Duis aute irure dolor in reprehenderit in 
-			voluptate velit esse cillum dolore eu fugiat</p>
+                <h1>{this.state.countdown}</h1>
+                <h3><a href="#">{this.props.event.title}</a></h3>
+                <h3>{this.props.event.deadline}</h3>        
+                <p>{this.props.event.description}</p>
                 <button>Edit</button>
                 <button>Delete</button>
             </div>
-            <div className="container">
-                <h1>16d 12h 10m 9s</h1>
-                <h3><a href="#">Title</a></h3>
-                <h3>Deadline</h3>        
-                <p>Description reprehenderit in 
-			voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-                <button>Edit</button>&nbsp;
-                <button>Delete</button>
-            </div>
-            <div className="container">
-                <h1>16d 12h 10m 9s</h1>
-                <h3><a href="#">Title</a></h3>
-                <h3>Deadline</h3>        
-                <p>Description Duis aute irure dolor in reprehenderit in 
-			voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-                <button>Edit</button>&nbsp;
-                <button>Delete</button>
-            </div>
-        </React.Fragment>
-    )
+        )
+    }
 }
 
 export default EventCard

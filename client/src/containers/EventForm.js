@@ -27,6 +27,7 @@ export default class EventForm extends Component {
         let stateCopy = {...this.state}
         delete stateCopy.slide
         debugger
+        console.log(stateCopy)
         createEvent(stateCopy)
     } 
 

@@ -35,6 +35,20 @@ export function fetchEvents() {
     }
 }
 
+export function countdown(event_deadline) {
+    let now = new Date().getTime()
+    let deadline = new Date(event_deadline).getTime()
+    let distance = deadline - now
+    
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24))
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000)
+    
+    let countdown = days + "d " + hours + "h " + minutes + "m " + seconds + "s "
+    return countdown
+}
+
 export function fetchEventShow(id) {
     return (dispatch) => {
       dispatch({ type: 'LOAD_EVENT_SHOW_REQUEST' })
