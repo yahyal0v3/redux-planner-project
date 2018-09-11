@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { countdown } from '../actions/actions'
 
 class EventCard extends Component {
@@ -16,14 +16,12 @@ class EventCard extends Component {
     }
 
     countdownTimer = () => {
-        debugger
         this.setState({
             countdown: countdown(this.props.event.deadline)
         })
     }
 
     render() {
-        debugger
         return (
             <div className="container">
                 <h1>{this.state.countdown}</h1>

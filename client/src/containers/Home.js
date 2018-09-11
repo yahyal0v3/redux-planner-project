@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { countdown } from '../actions/actions'
 
 import About from '../components/About';
 import WhatToDo from '../components/WhatToDo';
@@ -13,9 +14,7 @@ class Home extends Component {
   deadlineSample = () => {
     let today = new Date()
     let inTwoDays = new Date()
-    inTwoDays.setDate(today.getDate()+2)
-
-    this.deadline = inTwoDays.getTime()
+    this.deadline = inTwoDays.setDate(today.getDate()+2)
   }
 
   componentDidMount() {
@@ -27,19 +26,10 @@ class Home extends Component {
     clearInterval(this.interval)
   }
 
-  timerCountdown = () => {
-      let now = new Date()
-      let distance = this.deadline - now
-      
-      let days = Math.floor(distance / (1000 * 60 * 60 * 24))
-      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000)
-      
-      let countdown = days + "d " + hours + "h " + minutes + "m " + seconds + "s "
-      this.setState({
-          countdown: countdown
-      })
+  timerCountdown = () => { 
+    this.setState({
+        countdown: countdown(this.deadline)
+    })
       
   }
 
