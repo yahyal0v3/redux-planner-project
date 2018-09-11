@@ -31,9 +31,9 @@ function tasksReducer(state = [], action) {
  
 function eventsReducer(state = {
   events: [
-    {countdown: "", deadline: "2018-09-14T12:59", title: "Surprise Party", description: "Ut enim ad minim veniam, quis nostrud exercitation… laboris nisi ut aliquip ex ea commodo consequat."},
-    {countdown: "", deadline: "2018-09-25T18:59", title: "Graduation", description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
-    {countdown: "", deadline: "2018-09-11T15:00", title: "CockTail Party", description: "Duis aute irure dolor in reprehenderit in voluptat…elit esse cillum dolore eu fugiat nulla pariatur."}
+    {id: 1, deadline: "2018-09-14T12:59", title: "Surprise Party", description: "Ut enim ad minim veniam, quis nostrud exercitation… laboris nisi ut aliquip ex ea commodo consequat."},
+    {id: 2, deadline: "2018-09-25T18:59", title: "Graduation", description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."},
+    {id: 3, deadline: "2018-09-11T15:00", title: "CockTail Party", description: "Duis aute irure dolor in reprehenderit in voluptat…elit esse cillum dolore eu fugiat nulla pariatur."}
   ],
   loading: false
 }, action) {
@@ -41,11 +41,9 @@ function eventsReducer(state = {
     case "LOAD_EVENTS_REQUEST":
       return {...state, loading: true} 
     case "ADD_EVENTS":
+      action.events.map(event => event['id'] = cuidFn())
       return {events: action.events, loading: false}
       
-    case "CREATE_EVENT":
-      action.event['id'] = cuidFn()
-      return [...state, action.event]
     case "SHOW_EVENT":
       return state.find(event => event.id === action.id)
     case "DELETE_EVENT":

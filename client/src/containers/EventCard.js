@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { countdown } from '../actions/actions'
+import { NavLink } from 'react-router-dom'
 
 class EventCard extends Component {
 
@@ -22,12 +23,13 @@ class EventCard extends Component {
     }
 
     render() {
+        const {event} = this.props
         return (
             <div className="container">
                 <h1>{this.state.countdown}</h1>
-                <h3><a href="#">{this.props.event.title}</a></h3>
-                <h3>{this.props.event.deadline}</h3>        
-                <p>{this.props.event.description}</p>
+                <h3><NavLink to={`/party-planner/${event.id}`}>{event.title}</NavLink></h3>
+                <h3>{event.deadline}</h3>        
+                <p>{event.description}</p>
                 <button>Edit</button>
                 <button>Delete</button>
             </div>

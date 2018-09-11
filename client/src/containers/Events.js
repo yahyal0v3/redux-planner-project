@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import EventCard from '../components/EventCard'
+import EventCard from './EventCard'
 import { fetchEvents } from '../actions/actions'
 
 class Events extends Component {
