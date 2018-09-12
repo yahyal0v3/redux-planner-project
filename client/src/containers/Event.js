@@ -11,7 +11,10 @@ class Event extends Component {
 
     deadline = new Date(this.props.event.deadline).toLocaleString()
 
+    prepared = null
+
     componentDidMount() {
+        this.checkPreparedness()
         this.interval = setInterval(this.countdownTimer, 1000)
     }
 
@@ -25,13 +28,24 @@ class Event extends Component {
         })
     }
 
+    checkPreparedness = () => {
+        let passedDeadline = new Date(this.props.event.deadline) <= new Date() ? true : false
+        let completedTasks = this.props.event.tasks.every(task => task.completed === true)
+        if (passedDeadline && completedTasks) {
+            this.prepared = true
+        } else if (passedDeadline && completedTasks === false) {
+            this.prepared = false
+        }
+    }
+
     render() {
-        debugger
         function renderEvent() {
             if (!this.props.params) {
-                return <EventCard event={this.props.event} deadline={this.deadline} countdown={this.state.countdown} />
+                return <EventCard event={this.props.event} deadline={this.deadline} 
+                countdown={this.state.countdown} prepared={this.prepared} />
             } else if (!!this.props.params) {
-                return <EventShow event={this.props.event} deadline={this.deadline} countdown={this.state.countdown} />
+                return <EventShow event={this.props.event} deadline={this.deadline} 
+                countdown={this.state.countdown} prepared={this.prepared} />
             }
         }
 
