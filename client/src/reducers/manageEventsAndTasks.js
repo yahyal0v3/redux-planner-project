@@ -42,10 +42,9 @@ function eventsReducer(state = {
       return {...state, loading: true} 
     case "ADD_EVENTS":
       action.events.map(event => event['id'] = cuidFn())
-      return {events: action.events, loading: false}
+      return {events: action.events, loading: false}   
+
       
-    case "SHOW_EVENT":
-      return state.find(event => event.id === action.id)
     case "DELETE_EVENT":
         state.filter(event => event.id !== action.id)
         return state

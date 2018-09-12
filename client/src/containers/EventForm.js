@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component   } from 'react'
 import { createEvent } from '../actions/actions'
 
 export default class EventForm extends Component {
