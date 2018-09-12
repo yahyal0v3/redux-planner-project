@@ -37,6 +37,79 @@ a {
   text-decoration: none;
 }
 
+div.row {
+	width: 100%;
+}
+
+div.row section {
+	margin: 0px auto 0px auto;
+	padding: 50px;
+	min-width: 450px;
+	max-width: 800px;
+}
+
+div.row h1 {
+	font-size: 2.5em;
+  line-height: 2.3em;
+  color: #08235a;
+}
+
+div.row h2 {
+	font-size: 2em;
+	line-height: 2.3em;
+}
+
+div.row h3 {
+  font-size: 1.5em;
+}
+
+div.row h4 {
+  font-size: 1.35em;
+}
+
+div.firstRow h2, div.secondRow h2, .darkBlue {
+  color: #08235a;
+}
+
+div.secondRow {
+	background-color: #f08d4a;
+	color: white;
+}
+
+div.thirdRow {
+	background-color: #055471;
+	color: white;
+}
+
+div.fullForm h2 {
+  color: white;
+}
+
+div.fullForm form  { 
+  display: table;   
+  width: 100%;   
+}
+
+div.fullForm p { 
+  display: table-row;  
+}
+
+div.fullForm label {
+  font-size: 1.3em;
+  padding-right: 10px;
+}
+
+input[type=submit], button {
+  cursor: pointer;
+  font-weight: bold;
+  background-color: white;
+  border: 2px double white;
+  color: #055471;
+  border-radius: 5px;
+}
+
+/* Header and Footer Styles */
+
 #navbar {
 	background-attachment: fixed;
 	background-color:white;
@@ -82,13 +155,6 @@ div#headerImg p {
 	font: 2em/0em 'Century Gothic', sans-serif;
 } 
 
-input[type=submit], button {
-  cursor: pointer;
-  background-color: rgb(252, 206, 145);
-  border: 2px solid rgb(252, 206, 145);
-  border-radius: 5px
-}
-
 #footer {
 	background-color: #08235a;
 	color: white;
@@ -104,7 +170,7 @@ input[type=submit], button {
   text-decoration: underline;
 }
 
-#footer h3 {
+#footer h4 {
   margin-bottom: 100px;
 }
 
@@ -115,74 +181,26 @@ input[type=submit], button {
 
 /* Homepage Styles */
 
-div.row {
-	width: 100%;
-}
-
-div.row section {
-	margin: 0px auto 0px auto;
-	padding: 50px;
-	min-width: 450px;
-	max-width: 800px;
-}
-
-div.row h2 {
-	font-size: 2em;
-	line-height: 2.3em;
-}
-
-div#firstRow h2, div#secondRow h2 {
-  color: #08235a;
-}
-
-div#secondRow {
-	background-color: #f08d4a;
-	color: white;
-}
-
-div#secondRow div {
+div.secondRow div {
 	display: flex;
 }
 
-div#secondRow figure {
+div.secondRow figure {
 	flex-flow: row wrap;
 	flex: 1 1 auto;
 	color: white;
 }
 
-div#secondRow figure span {
+div.secondRow figure span {
   color: #08235a;
   font-weight: bold;
   font-size: 2.5em;
   line-height: 2em;
 }
 
-div#secondRow figcaption {
+div.secondRow figcaption {
   font-size: 1.3em;
   padding-top: 15px;
-}
-
-div#thirdRow {
-	background-color: #055471;
-	color: white;
-}
-
-div#fullForm h2 {
-  color: rgb(252, 206, 145);
-}
-
-div#fullForm form  { 
-  display: table;   
-  width: 100%;   
-}
-
-div#fullForm p { 
-  display: table-row;  
-}
-
-div#fullForm label {
-  font-size: 1.3em;
-  padding-right: 10px;
 }
 
 /* Events Styles */
@@ -217,3 +235,21 @@ div.container a:hover {
 div.container button {
   float: right;
 }
+
+/* Party Planner Styles */
+
+div#eventShow button {
+  background-color: #08235a;
+  border: 2px solid #08235a;
+  color: white;
+  margin-bottom: 2em;
+}
+
+div#taskForm h3 {
+  line-height: 2.5em;
+}
+
+div#planner section {
+	padding: 5px 0px 30px 0px;
+}
+

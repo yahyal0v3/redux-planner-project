@@ -3,13 +3,13 @@ import { createEvent } from '../actions/actions'
 
 export default class EventForm extends Component {
     
+    slide = 1
+    
     state = {
         deadline: "", 
         title: "",
         description: ""
     }
-
-    slide = 1
  
     handleKeyPress = event => {
         if (event.key === 'Enter') {
@@ -62,7 +62,7 @@ export default class EventForm extends Component {
             
             } else if (this.slide === 4) {
                 return (
-                    <div id="fullForm">
+                    <div className="fullForm">
                         <h2>Is This Your Event?</h2>
                         <form onSubmit={this.handleSubmit}>
                           <p>
@@ -85,7 +85,7 @@ export default class EventForm extends Component {
         }
 
         return (
-            <div className="row" id="thirdRow">
+            <div className="row thirdRow">
               <section>
                 {renderForm.call(this)}
               </section>

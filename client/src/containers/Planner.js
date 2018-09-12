@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { findEvent } from '../actions/actions'
 
 import TaskForm from './TaskForm';
 import Event from './Event'
@@ -10,17 +9,15 @@ class Planner extends Component {
 
   event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id))
 
-
   render() {
     debugger
     return (
-      <div className="planner">
-        <h1>Plan Event</h1>
+      <div id="planner">
         <Event params={this.props.match.params} event={this.event} />
-        <TaskForm />
+        <TaskForm event_title={this.event.title} />
         {/* <Tasks /> */}
       </div>
-    );
+    )
   }
 }
 
