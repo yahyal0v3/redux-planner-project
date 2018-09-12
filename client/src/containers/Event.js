@@ -9,6 +9,8 @@ class Event extends Component {
         countdown: ""
     }
 
+    deadline = new Date(this.props.event.deadline).toLocaleString()
+
     componentDidMount() {
         this.interval = setInterval(this.countdownTimer, 1000)
     }
@@ -27,9 +29,9 @@ class Event extends Component {
         debugger
         function renderEvent() {
             if (!this.props.params) {
-                return <EventCard event={this.props.event} countdown={this.state.countdown} />
+                return <EventCard event={this.props.event} deadline={this.deadline} countdown={this.state.countdown} />
             } else if (!!this.props.params) {
-                return <EventShow event={this.props.event} countdown={this.state.countdown} />
+                return <EventShow event={this.props.event} deadline={this.deadline} countdown={this.state.countdown} />
             }
         }
 

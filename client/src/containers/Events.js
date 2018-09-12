@@ -11,9 +11,9 @@ class Events extends Component {
 
   render() {
     return (
-      <div>
+      <div className="list">
         <h2>Events</h2>
-        <section id="events">
+        <section className="flexJustify">
             {this.props.events.map(event => <Event event={event} />)}
         </section>
       </div>

@@ -37,6 +37,8 @@ a {
   text-decoration: none;
 }
 
+/* Row Styles */
+
 div.row {
 	width: 100%;
 }
@@ -80,6 +82,8 @@ div.thirdRow {
 	background-color: #055471;
 	color: white;
 }
+
+/* Form Styles*/
 
 div.fullForm h2 {
   color: white;
@@ -179,33 +183,13 @@ div#headerImg p {
   left: 530px;
 }
 
-/* Homepage Styles */
+/* Events and Tasks Styles */
 
-div.secondRow div {
-	display: flex;
-}
-
-div.secondRow figure {
-	flex-flow: row wrap;
-	flex: 1 1 auto;
-	color: white;
-}
-
-div.secondRow figure span {
+div.list h2 {
   color: #08235a;
-  font-weight: bold;
-  font-size: 2.5em;
-  line-height: 2em;
 }
 
-div.secondRow figcaption {
-  font-size: 1.3em;
-  padding-top: 15px;
-}
-
-/* Events Styles */
-
-section#events {
+section.flexJustify {
   display:flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -234,6 +218,30 @@ div.container a:hover {
 
 div.container button {
   float: right;
+}
+
+/* Homepage Styles */
+
+div.secondRow div {
+	display: flex;
+}
+
+div.secondRow figure {
+	flex-flow: row wrap;
+	flex: 1 1 auto;
+	color: white;
+}
+
+div.secondRow figure span {
+  color: #08235a;
+  font-weight: bold;
+  font-size: 2.5em;
+  line-height: 2em;
+}
+
+div.secondRow figcaption {
+  font-size: 1.3em;
+  padding-top: 15px;
 }
 
 /* Party Planner Styles */

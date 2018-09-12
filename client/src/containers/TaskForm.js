@@ -16,6 +16,7 @@ export default class TaskForm extends Component {
   handleSubmit = event => {
       event.preventDefault()
       debugger
+      // updateEvent(state)
   } 
 
   render() {
@@ -24,7 +25,7 @@ export default class TaskForm extends Component {
     return (
       <div class="row thirdRow fullForm">
         <section>
-          <h3>Add Tasks to {this.props.event_title}</h3>
+          <h3>Add Tasks for {this.props.event_title}</h3>
           <form onSubmit={this.handleSubmit}>
             <p>
               <label for="deadline">Deadline</label>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import TaskForm from './TaskForm';
 import Event from './Event'
-// import Tasks from '../containers/Tasks';
+import Task from './Task';
 
 class Planner extends Component {
 
@@ -15,7 +15,12 @@ class Planner extends Component {
       <div id="planner">
         <Event params={this.props.match.params} event={this.event} />
         <TaskForm event_title={this.event.title} />
-        {/* <Tasks /> */}
+        <div className="list">
+          <h2>Tasks</h2>
+          <section className="flexJustify">
+            {this.event.tasks.map(task => <Task task={task} />)}
+          </section>
+        </div>
       </div>
     )
   }
