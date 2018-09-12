@@ -8,16 +8,15 @@ import Event from './Event'
 
 class Planner extends Component {
 
-  state = {
-    event: this.props.events.find(event => event.id === parseInt(this.props.match.params.id))
-  }
+  event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id))
+
 
   render() {
     debugger
     return (
       <div className="planner">
         <h1>Plan Event</h1>
-        <Event params={this.props.match.params} event={this.state.event} />
+        <Event params={this.props.match.params} event={this.event} />
         <TaskForm />
         {/* <Tasks /> */}
       </div>
