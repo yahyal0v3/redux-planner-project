@@ -70,24 +70,26 @@ export function createTask(data) {
     }
 }
 
-export function updateEvent(id) {
-    return fetch(`http://localhost:3001/events/${id}`, {
+export function updateEvent(data) {
+    return fetch(`http://localhost:3001/events/${data.id}`, {
         method: 'PATCH',
         headers: {
             'Accept': 'application/json',
-        }
+        },
+        body: JSON.stringify(data)
     })
     .then(resp => resp.json())
 }
 
-export function updateTaskStatus(id) {
+export function updateTaskStatus(data) {
     return (dispatch) => {
         dispatch({ type: 'LOAD_TASK_REQUEST' }) 
-        return fetch(`http://localhost:3001/tasks/${id}`, {
+        return fetch(`http://localhost:3001/tasks/${data.id}`, {
             method: 'PATCH',
             headers: {
                 'Accept': 'application/json',
-            }
+            },
+            body: JSON.stringify(data)
         })
         .then(resp => resp.json())
         .then(task => dispatch({type: "PATCH_TASK", id: task.id}))

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { countdown } from '../actions/actions'
+import { updateTaskStatus } from '../actions/actions'
+import { deleteTask } from '../actions/actions'
 
 export default class Task extends Component {
 
@@ -25,6 +27,18 @@ export default class Task extends Component {
         })
     }
 
+    handleCheck = () => {
+        let taskCopy = {...this.props.task}
+        taskCopy.completed = true
+        updateTaskStatus(taskCopy)
+    }
+
+    handleDelete = () => {
+        if (window.confirm('Are you sure you want to delete this task?')) {
+            deleteTask(this.props.task.id)
+        }
+    }
+
 
   render() {
 
@@ -43,8 +57,8 @@ export default class Task extends Component {
                     <h1 className="incompleted">Incomplete!</h1>
                     <h3>Late by {this.state.countdown}</h3>
                     <p>{this.props.task.description}</p>
-                    <button>Check</button>
-                    <button>Delete</button>
+                    <button onClick={this.handleCheck}>Check</button>
+                    <button onClick={this.handleDelete}>Delete</button>
                 </React.Fragment>
             )
         } else {
@@ -53,8 +67,8 @@ export default class Task extends Component {
                     <h1>{this.state.countdown}</h1>
                     <h3>{this.deadline}</h3>        
                     <p>{this.props.task.description}</p>
-                    <button>Check</button>
-                    <button>Delete</button>
+                    <button onClick={this.handleCheck}>Check</button>
+                    <button onClick={this.handleDelete}>Delete</button>
                 </React.Fragment>
             )        
         }

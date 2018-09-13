@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EventShow = ({event, countdown, deadline, prepared}) => {
+const EventShow = ({event, countdown, deadline, prepared, handleDelete}) => {
     return (
         <div class="row orangeRow" id="eventShow">
           <section>
@@ -8,9 +8,9 @@ const EventShow = ({event, countdown, deadline, prepared}) => {
             {prepared === null ? <h3 className="darkBlue">{countdown}</h3> : <h3 className="darkBlue">{prepared}</h3>}
             <h3>{deadline}</h3>        
             <p>{event.description}</p>
-            <button>Edit</button>
+            {prepared === null ? <button>Edit</button> : null}
             &nbsp;
-            <button>Delete</button>
+            <button onClick={handleDelete}>Delete</button>
           </section>
         </div>
     )

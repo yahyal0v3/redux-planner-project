@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import EventCard from '../components/EventCard'
 import EventShow from '../components/EventShow'
 import { countdown } from '../actions/actions'
+import { deleteEvent } from '../actions/actions'
 
 class Event extends Component {
 
@@ -41,14 +42,23 @@ class Event extends Component {
         }
     }
 
+    handleDelete = () => {
+        if (window.confirm('Are you sure you want to delete this event? All tasks will be deleted as well.')) {
+            deleteEvent(this.props.event.id)
+        }
+    }
+
+
     render() {
         function renderEvent() {
             if (this.props.show) {
                 return <EventShow event={this.props.event} deadline={this.deadline} 
-                countdown={this.state.countdown} prepared={this.prepared} />
+                countdown={this.state.countdown} prepared={this.prepared}
+                handleDelete={this.handleDelete} />
             } else {
                 return <EventCard event={this.props.event} deadline={this.deadline} 
-                countdown={this.state.countdown} prepared={this.prepared} />
+                countdown={this.state.countdown} prepared={this.prepared}
+                handleDelete={this.handleDelete} />
             }
         }
 

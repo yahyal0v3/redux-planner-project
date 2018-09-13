@@ -47,9 +47,12 @@ Events Component
 ____________________
 
 To Do
--fix navbar links
--when user clicks check out, completed false becomes true
--task deadline has to be before event
+x-fix navbar links
+x-when user clicks check out, completed false becomes true
+x-EventShow buttons when pass deadline
+-update reducer
+x-task deadline has to be before event
 -update event form
+
 -delete confirmation alert
 -fix horizontal scroll

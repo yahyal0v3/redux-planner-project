@@ -4,9 +4,10 @@ import { createTask } from '../actions/actions'
 export default class TaskForm extends Component {
 
   state = {
+    completed: false,
     deadline: "", 
     description: "",
-    event_id: this.props.event_id
+    event_id: this.props.event.id
   }
 
   handleChange = event => {
@@ -27,11 +28,12 @@ export default class TaskForm extends Component {
     return (
       <div className="row fullForm tealRow" id="formRow">
         <section>
-          <h3>Add Tasks for {this.props.event_title}</h3>
+          <h3>Add Tasks for {this.props.event.title}</h3>
           <form onSubmit={this.handleSubmit}>
             <p>
               <label for="deadline">Deadline</label>
-              <input type="datetime-local" name="deadline" value={deadline} onChange={this.handleChange} />
+              <input type="datetime-local" name="deadline" value={deadline} onChange={this.handleChange} 
+              max={this.props.event.deadline} />
             </p><br />
             <p>
               <label for="description">Description</label>

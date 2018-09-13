@@ -7,14 +7,14 @@ import Task from './Task';
 
 class Planner extends Component {
 
-  event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id))
+  event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))
 
   render() {
     debugger
     return (
       <div id="planner">
         <Event show={true} event={this.event} />
-        <TaskForm event_title={this.event.title} event_id={this.event.id} />
+        <TaskForm event={this.event} />
         <div className="list">
           <h2>Tasks</h2>
           <section className="flexJustify">

@@ -103,7 +103,7 @@ div.fullForm label {
   padding-right: 10px;
 }
 
-input[type=submit], button {
+input[type=submit], button, button a {
   cursor: pointer;
   font-weight: bold;
   background-color: white;
@@ -218,7 +218,7 @@ div.container h3, div.container h3 a {
   color: #08235a;
 }
 
-div.container a:hover {
+div.container h3 a:hover {
   border: 2px solid #08235a;
   background-color: #08235a;
   color: white;
