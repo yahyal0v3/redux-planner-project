@@ -43,7 +43,7 @@ function eventsReducer(state = {
   loading: false
 }, action) {
   switch (action.type) {
-    case "LOAD_EVENTS_REQUEST":
+    case "LOAD_EVENT_REQUEST":
       return {...state, loading: true} 
     case "ADD_EVENTS":
       action.events.map(event => event['id'] = cuidFn())

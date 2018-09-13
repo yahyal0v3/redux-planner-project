@@ -21,7 +21,7 @@ export function createEvent(data) {
 export function fetchEvents() {
     // debugger
     return (dispatch) => {
-        dispatch({ type: 'LOAD_EVENTS_REQUEST' })
+        dispatch({ type: 'LOAD_EVENT_REQUEST' })
         return fetch('http://localhost:3001/events')
         .then(resp => {
             console.log(resp.status)
@@ -49,38 +49,72 @@ export function countdown(event_deadline) {
     return countdown
 }
 
+// export function fetchTasks(id) {
+//     return fetch(`http://localhost:3001/events/${id}/tasks`)
+//         .then(response => response.json())
+//     }
+// }
 
-
-
-
-
-
-export function fetchEventShow(id) {
+export function createTask(data) {
     return (dispatch) => {
-      dispatch({ type: 'LOAD_EVENT_SHOW_REQUEST' })
-      return fetch(`http://localhost:3001/events/${id}`)
-        .then(response => response.json())
-        .then(events => dispatch({ type: 'SHOW_EVENT', events}))
+        dispatch({ type: 'LOAD_TASK_REQUEST' }) 
+        return fetch(`http://localhost:3001/tasks`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify(data)})
+        .then(resp => resp.json())
+        .then(task => dispatch({type: "ADD_TASK", task: task}))
+        .catch(error => console.log(error))
     }
 }
 
-export const createTask = task => {
-    return {
-        type: 'CREATE_TASK',
-        task
+export function updateEvent(id) {
+    return fetch(`http://localhost:3001/events/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Accept': 'application/json',
+        }
+    })
+    .then(resp => resp.json())
+}
+
+export function updateTaskStatus(id) {
+    return (dispatch) => {
+        dispatch({ type: 'LOAD_TASK_REQUEST' }) 
+        return fetch(`http://localhost:3001/tasks/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+            }
+        })
+        .then(resp => resp.json())
+        .then(task => dispatch({type: "PATCH_TASK", id: task.id}))
+        .catch(error => console.log(error))
     }
 }
 
-export const deleteEvent = event => {
-    return {
-        type: 'DELETE_EVENT',
-        event
+export function deleteEvent(id) {
+    return (dispatch) => {
+        dispatch({ type: 'LOAD_EVENT_REQUEST' }) 
+        return fetch(`http://localhost:3001/events/${id}`, {
+            method: 'DELETE'
+        })
+        .then(resp => resp.json())
+        .then(event => dispatch({type: "DELETE_EVENT", id: event.id}))
+        .catch(error => console.log(error))
     }
 }
 
-export const deleteTask = task => {
-    return {
-        type: 'DELETE_TASK',
-        task
+export function deleteTask(id) {
+    return (dispatch) => {
+        dispatch({ type: 'LOAD_TASK_REQUEST' }) 
+        return fetch(`http://localhost:3001/tasks/${id}`, {
+            method: 'DELETE'
+        })
+        .then(resp => resp.json())
+        .then(task => dispatch({type: "DELETE_TASK", id: task.id}))
+        .catch(error => console.log(error))
     }
 }

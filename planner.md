@@ -44,3 +44,11 @@ Events Component
     Task Form Component
     Tasks Component
 
+____________________
+
+To Do
+-fix navbar links
+-when user clicks check out, completed false becomes true
+-task deadline has to be before event
+-update event form
+-delet confirmation alert

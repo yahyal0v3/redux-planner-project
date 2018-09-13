@@ -43,11 +43,11 @@ class Event extends Component {
 
     render() {
         function renderEvent() {
-            if (!this.props.params) {
-                return <EventCard event={this.props.event} deadline={this.deadline} 
-                countdown={this.state.countdown} prepared={this.prepared} />
-            } else if (!!this.props.params) {
+            if (this.props.show) {
                 return <EventShow event={this.props.event} deadline={this.deadline} 
+                countdown={this.state.countdown} prepared={this.prepared} />
+            } else {
+                return <EventCard event={this.props.event} deadline={this.deadline} 
                 countdown={this.state.countdown} prepared={this.prepared} />
             }
         }

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { createTask } from '../actions/actions'
 
 export default class TaskForm extends Component {
 
   state = {
     deadline: "", 
-    description: ""
+    description: "",
+    event_id: this.props.event_id
   }
 
   handleChange = event => {
@@ -16,7 +18,7 @@ export default class TaskForm extends Component {
   handleSubmit = event => {
       event.preventDefault()
       debugger
-      // updateEvent(state)
+      createTask(this.state)
   } 
 
   render() {

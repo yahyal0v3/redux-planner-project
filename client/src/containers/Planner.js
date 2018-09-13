@@ -13,8 +13,8 @@ class Planner extends Component {
     debugger
     return (
       <div id="planner">
-        <Event params={this.props.match.params} event={this.event} />
-        <TaskForm event_title={this.event.title} />
+        <Event show={true} event={this.event} />
+        <TaskForm event_title={this.event.title} event_id={this.event.id} />
         <div className="list">
           <h2>Tasks</h2>
           <section className="flexJustify">
