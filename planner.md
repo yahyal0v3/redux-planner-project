@@ -52,7 +52,7 @@ x-when user clicks check out, completed false becomes true
 x-EventShow buttons when pass deadline
 -update reducer
 x-task deadline has to be before event
--update event form
+x-update event form
 
--delete confirmation alert
+x-delete confirmation alert
 -fix horizontal scroll

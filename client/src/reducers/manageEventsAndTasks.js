@@ -9,18 +9,23 @@ const rootReducer = combineReducers({
  
 export default rootReducer
  
-function tasksReducer(state = [], action) {
+function tasksReducer(state = {
+  tasks: [],
+  loading: false
+  }, action) {
   switch (action.type) {
-    case "CREATE_TASK":
-      // const task = {
-      //     id: cuidFn(), deadline: action.datetime, description: action.text, eventId: action.eventId
-      //   }
-      action.task['id'] = cuidFn()
-      return [...state, action.task]
- 
-    case "DELETE_TASK":
-      state.filter(task => task.id !== action.id)
+
+    case "LOAD_TASK_REQUEST":
+      return {...state, loading: true} 
+    case "ADD_TASK":
+      state.tasks.push(action.task)
       return state
+    case "ADD_TASKS":
+      //action.payload.map(task => task['id'] = cuidFn())
+      return {tasks: action.payload, loading: false}    
+    case "DELETE_TASK":
+        state.filter(task => task.id !== action.id)
+        return state
 
 
 
@@ -46,10 +51,8 @@ function eventsReducer(state = {
     case "LOAD_EVENT_REQUEST":
       return {...state, loading: true} 
     case "ADD_EVENTS":
-      action.events.map(event => event['id'] = cuidFn())
-      return {events: action.events, loading: false}   
-
-      
+      //action.payload.map(event => event['id'] = cuidFn())
+      return {events: action.payload, loading: false}    
     case "DELETE_EVENT":
         state.filter(event => event.id !== action.id)
         return state
