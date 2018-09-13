@@ -206,6 +206,14 @@ div.container h1 {
   color: #f08d4a;
 }
 
+div.container h1.incompleted {
+  color: orangered;
+}
+
+div.container h1.completed {
+  color: #0539a1;
+}
+
 div.container h3, div.container h3 a {
   color: #08235a;
 }
@@ -247,7 +255,7 @@ div.secondRow figcaption {
 /* Party Planner Styles */
 
 div#eventShow button {
-  background-color: #08235a;
+  background-color: #042a75;
   border: 2px solid #08235a;
   color: white;
   margin-bottom: 2em;

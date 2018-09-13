@@ -30,11 +30,14 @@ class Event extends Component {
 
     checkPreparedness = () => {
         let passedDeadline = new Date(this.props.event.deadline) <= new Date() ? true : false
-        let completedTasks = this.props.event.tasks.every(task => task.completed === true)
+        let completedTasks = false
+        if (this.props.event.tasks.length !== 0) {
+            completedTasks = this.props.event.tasks.every(task => task.completed === true)
+        }
         if (passedDeadline && completedTasks) {
-            this.prepared = true
+            this.prepared = "Fully Prepared!"
         } else if (passedDeadline && completedTasks === false) {
-            this.prepared = false
+            this.prepared = "Not Prepared"
         }
     }
 
