@@ -51,4 +51,5 @@ To Do
 -when user clicks check out, completed false becomes true
 -task deadline has to be before event
 -update event form
--delet confirmation alert
+-delete confirmation alert
+-fix horizontal scroll

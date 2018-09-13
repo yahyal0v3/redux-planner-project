@@ -3,7 +3,7 @@ import React from 'react'
 const WhatToDo = props => {
 
     return (
-        <div className="row secondRow">
+        <div className="row orangeRow" id="howTo">
             <section>
             <h2>What To Do</h2>
             <div>

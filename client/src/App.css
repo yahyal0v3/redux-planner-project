@@ -69,16 +69,16 @@ div.row h4 {
   font-size: 1.35em;
 }
 
-div.firstRow h2, div.secondRow h2, .darkBlue {
+div.firstRow h2, div.orangeRow h2, .darkBlue {
   color: #08235a;
 }
 
-div.secondRow {
+div.orangeRow {
 	background-color: #f08d4a;
 	color: white;
 }
 
-div.thirdRow {
+div.tealRow {
 	background-color: #054671;
 	color: white;
 }
@@ -230,24 +230,24 @@ div.container button {
 
 /* Homepage Styles */
 
-div.secondRow div {
+div.orangeRow div {
 	display: flex;
 }
 
-div.secondRow figure {
+div.orangeRow figure {
 	flex-flow: row wrap;
 	flex: 1 1 auto;
 	color: white;
 }
 
-div.secondRow figure span {
+div.orangeRow figure span {
   color: #08235a;
   font-weight: bold;
   font-size: 2.5em;
   line-height: 2em;
 }
 
-div.secondRow figcaption {
+div.orangeRow figcaption {
   font-size: 1.3em;
   padding-top: 15px;
 }
@@ -256,13 +256,9 @@ div.secondRow figcaption {
 
 div#eventShow button {
   background-color: #042a75;
-  border: 2px solid #08235a;
+  border: 2px solid #0a2b6d;
   color: white;
   margin-bottom: 2em;
-}
-
-div#taskForm h3 {
-  line-height: 2.5em;
 }
 
 div#planner section {
