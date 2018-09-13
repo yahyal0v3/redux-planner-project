@@ -7,6 +7,8 @@ export default class Task extends Component {
         countdown: ""
     }
 
+    passedDeadline = new Date(this.props.task.deadline) <= new Date() ? true : false
+
     deadline = new Date(this.props.task.deadline).toLocaleString()
 
     componentDidMount() {
@@ -26,29 +28,41 @@ export default class Task extends Component {
 
   render() {
 
-    function checkCompleteness() {
-        let passedDeadline = new Date(this.props.task.deadline) <= new Date() ? true : false
-        if (passedDeadline && this.props.task.completed) {
-            return <h1 className="completed">Completed</h1>
-        } else if (passedDeadline && this.props.task.completed === false) {
+    function renderCompletionStatus() {
+        if (this.passedDeadline && this.props.task.completed) {
+            return (
+                <React.Fragment>
+                    <h1 className="completed">Completed</h1>
+                    <h3>{this.deadline}</h3>        
+                    <p>{this.props.task.description}</p>
+                </React.Fragment>
+            )
+        } else if (this.passedDeadline && this.props.task.completed === false) {
             return (
                 <React.Fragment>
                     <h1 className="incompleted">Incomplete!</h1>
                     <h3>Late by {this.state.countdown}</h3>
+                    <p>{this.props.task.description}</p>
+                    <button>Check</button>
+                    <button>Delete</button>
                 </React.Fragment>
             )
         } else {
-            return <h1>{this.state.countdown}</h1>          
+            return (
+                <React.Fragment>
+                    <h1>{this.state.countdown}</h1>
+                    <h3>{this.deadline}</h3>        
+                    <p>{this.props.task.description}</p>
+                    <button>Check</button>
+                    <button>Delete</button>
+                </React.Fragment>
+            )        
         }
     }
     
     return (
         <div className="container">
-            {checkCompleteness.call(this)}
-            <h3>{this.deadline}</h3>        
-            <p>{this.props.task.description}</p>
-            <button>Edit</button>
-            <button>Delete</button>
+            {renderCompletionStatus.call(this)}
         </div>
     )
   }

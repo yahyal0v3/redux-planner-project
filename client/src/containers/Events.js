@@ -14,7 +14,7 @@ class Events extends Component {
       <div className="list">
         <h2>Events</h2>
         <section className="flexJustify">
-            {this.props.events.map(event => <Event event={event} />)}
+            {this.props.events.map(event => <Event key={event.id} event={event} />)}
         </section>
       </div>
     )

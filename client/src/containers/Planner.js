@@ -18,7 +18,7 @@ class Planner extends Component {
         <div className="list">
           <h2>Tasks</h2>
           <section className="flexJustify">
-            {this.event.tasks.map(task => <Task task={task} />)}
+            {this.event.tasks.map(task => <Task key={task.id} task={task} />)}
           </section>
         </div>
       </div>
