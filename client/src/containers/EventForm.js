@@ -27,14 +27,12 @@ export default class EventForm extends Component {
     handleSubmit = event => {
         event.preventDefault()
         debugger
-        console.log(this.state)
         createEvent(this.state)
     } 
 
     render() {
 
         function renderForm() {
-            debugger
             const {deadline, title, description} = this.state
             if (this.slide === 1) { 
                 return (

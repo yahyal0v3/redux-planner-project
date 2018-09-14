@@ -19,8 +19,8 @@ export function createEvent(data) {
     return fetch('http://localhost:3001/events', {
         method: 'POST',
         credentials: "same-origin",
-        mode: 'no-cors',
         headers: {
+            'Content-Type': 'application/json',
             'Accept': 'application/json',
         },
         body: JSON.stringify(data)

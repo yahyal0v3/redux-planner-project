@@ -50,7 +50,7 @@ To Do
 x-fix navbar links
 x-when user clicks check out, completed false becomes true
 x-EventShow buttons when pass deadline
--update reducer
+x-update reducer
 x-task deadline has to be before event
 x-update event form
 

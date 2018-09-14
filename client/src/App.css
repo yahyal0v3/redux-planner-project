@@ -254,7 +254,7 @@ div.orangeRow figcaption {
 
 /* Party Planner Styles */
 
-div#eventShow button {
+div#eventShow button, div#eventShow button a {
   background-color: #042a75;
   border: 2px solid #0a2b6d;
   color: white;

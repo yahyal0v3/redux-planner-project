@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const EventShow = ({event, countdown, deadline, prepared, handleDelete}) => {
     return (
@@ -8,7 +9,7 @@ const EventShow = ({event, countdown, deadline, prepared, handleDelete}) => {
             {prepared === null ? <h3 className="darkBlue">{countdown}</h3> : <h3 className="darkBlue">{prepared}</h3>}
             <h3>{deadline}</h3>        
             <p>{event.description}</p>
-            {prepared === null ? <button>Edit</button> : null}
+            {prepared === null ? <button><NavLink to={`/events/${event.id}/edit`}>Edit</NavLink></button> : null}
             &nbsp;
             <button onClick={handleDelete}>Delete</button>
           </section>
