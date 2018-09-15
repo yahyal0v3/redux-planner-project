@@ -27,6 +27,7 @@ class Planner extends Component {
 }
 
 const mapStateToProps = state => {
+  debugger
   return {
     events: state.eventsState.events,
   }

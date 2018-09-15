@@ -14,21 +14,21 @@ export function countdown(event_deadline) {
     return countdown
 }
 
+//const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+
 export function createEvent(data) {
     debugger
+    console.log(JSON.stringify(data))
+    console.log(typeof JSON.stringify(data))
     return fetch('http://localhost:3001/events', {
         method: 'POST',
-        credentials: "same-origin",
         headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json',
+            //'X-CSRF-TOKEN': token
         },
         body: JSON.stringify(data)
-    }).then(resp => {
-        debugger
-        resp.json()})
+    }).then(resp => resp.json())
     .then(event => console.log(event))
-
 }
 
 export function createTask(data) {
@@ -47,19 +47,12 @@ export function createTask(data) {
 }
 
 export function fetchEvents() {
-    // debugger
     return (dispatch) => {
         dispatch({ type: 'LOAD_EVENT_REQUEST' })
         return fetch('http://localhost:3001/events')
-        .then(resp => {
-            console.log(resp.status)
-            console.log(resp.statusText)
-            // debugger
-            resp.json()})
+        .then(resp => resp.json())
         .then(events => dispatch({type: "ADD_EVENTS", payload: events}))
-        .catch(error => {
-            // debugger
-            console.log(error)})
+        .catch(error => console.log(error))
     }
 }
 

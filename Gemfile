@@ -34,7 +34,7 @@ gem 'devise'
 
 gem 'bootsnap'
 
-gem 'rack-cors'
+gem 'rack-cors', require: 'rack/cors'
 
 gem 'pry-remote'
 # Use Redis adapter to run Action Cable in production
