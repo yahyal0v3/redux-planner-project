@@ -6,12 +6,11 @@ import { fetchEvents } from '../actions/actions'
 class Events extends Component {
 
   componentDidMount() {
-    debugger
-    this.props.fetchEvents()
+    this.props.dispatch(fetchEvents())
   }
 
   render() {
-    debugger
+
     if (this.props.loading === true) {
       return (
         <div className="row">
@@ -25,7 +24,7 @@ class Events extends Component {
         <div className="list">
         <h2>Events</h2>
         <section className="flexJustify">
-            {this.props.events.map(event => <Event key={event.id} event={event} />)}
+            {this.props.events.map(event => <Event key={event.id} event={event} dispatch={this.props.dispatch} />)}
         </section>
       </div>
       )
@@ -35,18 +34,10 @@ class Events extends Component {
 }
 
 const mapStateToProps = state => {
-  debugger
   return {
     events: state.eventsState.events,
     loading: state.eventsState.loading
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  debugger
-  return {
-      fetchEvents: () => dispatch(fetchEvents())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Events)
+export default connect(mapStateToProps)(Events)

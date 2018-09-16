@@ -47,6 +47,7 @@ export function createTask(data) {
 }
 
 export function fetchEvents() {
+    debugger
     return (dispatch) => {
         dispatch({ type: 'LOAD_EVENT_REQUEST' })
         return fetch('http://localhost:3001/events')
@@ -99,20 +100,25 @@ export function updateTaskStatus(data) {
     }
 }
 
-export function deleteEvent(id) {
+export function deleteEvent(id, dispatch) {
+    const proxyurl = "https://cors-anywhere.herokuapp.com/"
+
+    dispatch({ type: 'LOAD_EVENT_REQUEST' }) 
     debugger
-
-        return fetch(`http://localhost:3001/events/${id}`, {
-            method: 'DELETE'
-        })
-        .then(resp => {
-            debugger
-            return resp.json()})
-        .then(event => {
-            debugger
-            return event.id})
-        .catch(error => console.log(error))
-
+    return fetch(proxyurl + `http://localhost:3001/events/${id}`, {
+        method: 'DELETE',
+        // headers: {
+        //     Access-Control-Allow-Origin: *
+        // },
+    })
+    .then(resp => {
+        console.log(resp.status)
+        debugger
+        return resp.json()})
+    .then(event => {
+        debugger
+        return dispatch({type: "DELETE_EVENT", id: event.id})})
+    .catch(error => console.log(error))
 }
 
 export function deleteTask(id) {

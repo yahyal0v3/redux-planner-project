@@ -44,7 +44,8 @@ class Event extends Component {
 
     handleDelete = () => {
         if (window.confirm('Are you sure you want to delete this event? All tasks will be deleted as well.')) {
-            deleteEvent(this.props.event.id)
+            debugger
+            deleteEvent(this.props.event.id, this.props.dispatch)
         }
     }
 
