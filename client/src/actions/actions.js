@@ -101,8 +101,7 @@ export function updateTaskStatus(data) {
 
 export function deleteEvent(id) {
     debugger
-    return (dispatch) => {
-        dispatch({ type: 'LOAD_EVENT_REQUEST' }) 
+
         return fetch(`http://localhost:3001/events/${id}`, {
             method: 'DELETE'
         })
@@ -111,9 +110,9 @@ export function deleteEvent(id) {
             return resp.json()})
         .then(event => {
             debugger
-            return dispatch({type: "DELETE_EVENT", id: event.id})})
+            return event.id})
         .catch(error => console.log(error))
-    }
+
 }
 
 export function deleteTask(id) {

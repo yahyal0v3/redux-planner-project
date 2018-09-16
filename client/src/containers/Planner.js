@@ -28,22 +28,31 @@ class Planner extends Component {
 
 
   render() {
-    debugger
 
-    return (
-      <div id="planner">
-        <Event show={true} event={this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))} />
-        <TaskForm event={this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))} />
-
-        <div className="list">
-          <h2>Tasks</h2>
-          <section className="flexJustify">
-            {this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10)).tasks.map(task => <Task key={task.id} task={task} />)}
+    if (this.props.events.length === 0 || this.props.loading === true) {
+      return (
+        <div className="row">
+          <section>
+            <div className="loader"></div>
           </section>
         </div>
-        
-      </div>
-    )
+      )    
+    } else {
+      debugger
+      return (
+        <div id="planner">
+          <Event show={true} event={this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))} />
+          <TaskForm event={this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))} />
+  
+          <div className="list">
+            <h2>Tasks</h2>
+            <section className="flexJustify">
+              {this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10)).tasks.map(task => <Task key={task.id} task={task} />)}
+            </section>
+          </div> 
+        </div>
+      )
+    }
   }
 }
 
@@ -56,7 +65,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  debugger
   return {
       fetchEvents: () => dispatch(fetchEvents())
   }

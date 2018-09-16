@@ -19,7 +19,7 @@ class Events extends Component {
             <div className="loader"></div>
           </section>
         </div>
-    )
+      )
     } else {
       return (
         <div className="list">
