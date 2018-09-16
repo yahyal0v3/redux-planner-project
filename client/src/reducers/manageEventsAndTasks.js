@@ -45,8 +45,9 @@ function eventsReducer(state = {
       //action.payload.map(event => event['id'] = cuidFn())
       return {events: action.payload, loading: false}    
     case "DELETE_EVENT":
-        state.filter(event => event.id !== action.id)
-        return state
+      debugger
+      state.filter(event => event.id !== action.id)
+      return state
  
     default:
       return state

@@ -56,10 +56,20 @@ export function fetchEvents() {
     }
 }
 
-// export function fetchTasks(id) {
-//     return fetch(`http://localhost:3001/events/${id}/tasks`)
-//         .then(response => response.json())
-//     }
+// export function fetchEventShow(id) {
+//     debugger
+//     return (dispatch) => {
+//         dispatch({ type: 'LOAD_EVENT_REQUEST' })
+//         return fetch(`http://localhost:3001/events/${id}`, {cache: "no-store"})
+//         .then(resp => {
+//             debugger
+//             return resp.json()})
+//         .then(event => {
+//             debugger
+//             dispatch({ type: 'STOP_LOAD_REQUEST' })
+//             return event})
+//         .catch(error => console.log(error))
+//         }
 // }
 
 export function updateEvent(data) {
@@ -90,13 +100,18 @@ export function updateTaskStatus(data) {
 }
 
 export function deleteEvent(id) {
+    debugger
     return (dispatch) => {
         dispatch({ type: 'LOAD_EVENT_REQUEST' }) 
         return fetch(`http://localhost:3001/events/${id}`, {
             method: 'DELETE'
         })
-        .then(resp => resp.json())
-        .then(event => dispatch({type: "DELETE_EVENT", id: event.id}))
+        .then(resp => {
+            debugger
+            return resp.json()})
+        .then(event => {
+            debugger
+            return dispatch({type: "DELETE_EVENT", id: event.id})})
         .catch(error => console.log(error))
     }
 }
