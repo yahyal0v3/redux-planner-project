@@ -5,7 +5,7 @@ import { fetchEvents } from '../actions/actions'
 
 import TaskForm from './TaskForm';
 import Event from './Event'
-import Task from './Task';
+import Tasks from './Tasks';
 
 class Planner extends Component {
 
@@ -44,12 +44,7 @@ class Planner extends Component {
           <Event show={true} event={event} />
           <TaskForm event={event} />
   
-          <div className="list">
-            <h2>Tasks</h2>
-            <section className="flexJustify">
-              {event.tasks.map(task => <Task key={task.id} task={task} dispatch={this.props.dispatch} />)}
-            </section>
-          </div> 
+          <Tasks event_tasks={event.tasks} />
         </div>
       )
     }

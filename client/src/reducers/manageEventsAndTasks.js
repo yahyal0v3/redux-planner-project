@@ -20,17 +20,17 @@ function tasksReducer(state = {
     case "UPDATE_TASK":
       state.filter(task => task.id !== action.id)
       state.tasks.push(action.task)
-      return state
+      return {...state, loading: true} 
     case "ADD_TASK":
       //stateCopy = {...state}
       state.tasks.push(action.task)
-      return state
+      return {...state, loading: true} 
     case "ADD_TASKS":
       //action.payload.map(task => task['id'] = cuidFn())
-      return {tasks: action.payload, loading: false}    
+      return {tasks: action.tasks}    
     case "DELETE_TASK":
         state.filter(task => task.id !== action.id)
-        return state
+        return {...state, loading: true} 
 
 
 
