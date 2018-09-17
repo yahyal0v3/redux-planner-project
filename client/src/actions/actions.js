@@ -18,8 +18,6 @@ export function countdown(event_deadline) {
 
 export function createEvent(data) {
     debugger
-    console.log(JSON.stringify(data))
-    console.log(typeof JSON.stringify(data))
     return fetch('http://localhost:3001/events', {
         method: 'POST',
         headers: {
@@ -84,20 +82,28 @@ export function updateEvent(data) {
     .then(resp => resp.json())
 }
 
-export function updateTaskStatus(data) {
-    return (dispatch) => {
+export function updateTaskStatus(data, dispatch) {
+    debugger
         dispatch({ type: 'LOAD_TASK_REQUEST' }) 
         return fetch(`http://localhost:3001/tasks/${data.id}`, {
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin':'*',
+                //'Access-Control-Allow-Methods':'PUT',
+                // 'Access-Control-Request-Headers': 'X-Custom-Header',
+                // 'Access-Control-Allow-Credentials':true,
             },
             body: JSON.stringify(data)
         })
-        .then(resp => resp.json())
-        .then(task => dispatch({type: "UPDATE_TASK", id: task.id}))
+        .then(resp => {
+            debugger
+            return resp.json()})
+        .then(task => {
+            debugger
+            return dispatch({type: "UPDATE_TASK", id: task.id})})
         .catch(error => console.log(error))
-    }
 }
 
 export function deleteEvent(id, dispatch) {

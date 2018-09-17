@@ -14,7 +14,7 @@ class Planner extends Component {
 
   componentDidMount() {
     debugger
-    this.props.fetchEvents()
+    this.props.dispatch(fetchEvents())
   }
 
   // findEvent = () => {
@@ -38,16 +38,16 @@ class Planner extends Component {
         </div>
       )    
     } else {
-      debugger
+      const event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))
       return (
         <div id="planner">
-          <Event show={true} event={this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))} />
-          <TaskForm event={this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))} />
+          <Event show={true} event={event} />
+          <TaskForm event={event} />
   
           <div className="list">
             <h2>Tasks</h2>
             <section className="flexJustify">
-              {this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10)).tasks.map(task => <Task key={task.id} task={task} />)}
+              {event.tasks.map(task => <Task key={task.id} task={task} dispatch={this.props.dispatch} />)}
             </section>
           </div> 
         </div>
@@ -57,18 +57,12 @@ class Planner extends Component {
 }
 
 const mapStateToProps = state => {
-  debugger
+  //debugger
   return {
     events: state.eventsState.events,
     loading: state.eventsState.loading
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-      fetchEvents: () => dispatch(fetchEvents())
-  }
-}
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Planner);
+export default connect(mapStateToProps)(Planner);

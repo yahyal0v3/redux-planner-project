@@ -30,7 +30,7 @@ export default class Task extends Component {
     handleCheck = () => {
         let taskCopy = {...this.props.task}
         taskCopy.completed = true
-        updateTaskStatus(taskCopy)
+        updateTaskStatus(taskCopy, this.props.dispatch)
     }
 
     handleDelete = () => {

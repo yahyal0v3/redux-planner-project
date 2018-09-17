@@ -17,7 +17,12 @@ function tasksReducer(state = {
 
     case "LOAD_TASK_REQUEST":
       return {...state, loading: true} 
+    case "UPDATE_TASK":
+      state.filter(task => task.id !== action.id)
+      state.tasks.push(action.task)
+      return state
     case "ADD_TASK":
+      //stateCopy = {...state}
       state.tasks.push(action.task)
       return state
     case "ADD_TASKS":
