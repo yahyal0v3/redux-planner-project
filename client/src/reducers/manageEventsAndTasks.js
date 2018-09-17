@@ -18,19 +18,20 @@ function tasksReducer(state = {
     case "LOAD_TASK_REQUEST":
       return {...state, loading: true} 
     case "UPDATE_TASK":
-      state.filter(task => task.id !== action.id)
+      debugger
+      state.tasks.filter(task => task.id !== action.task.id)
       state.tasks.push(action.task)
-      return {...state, loading: true} 
+      return {...state, loading: false} 
     case "ADD_TASK":
       //stateCopy = {...state}
       state.tasks.push(action.task)
-      return {...state, loading: true} 
+      return {...state, loading: false} 
     case "ADD_TASKS":
       //action.payload.map(task => task['id'] = cuidFn())
       return {tasks: action.tasks}    
     case "DELETE_TASK":
-        state.filter(task => task.id !== action.id)
-        return {...state, loading: true} 
+        state.tasks.filter(task => task.id !== action.id)
+        return {...state, loading: false} 
 
 
 
@@ -50,9 +51,9 @@ function eventsReducer(state = {
       //action.payload.map(event => event['id'] = cuidFn())
       return {events: action.payload, loading: false}    
     case "DELETE_EVENT":
+      let eventsEdit = state.events.filter(event => event.id !== action.id)
       debugger
-      state.filter(event => event.id !== action.id)
-      return state
+      return {events: eventsEdit, loading: false} 
  
     default:
       return state

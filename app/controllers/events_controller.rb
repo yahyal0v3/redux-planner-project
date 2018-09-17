@@ -2,7 +2,7 @@ class EventsController < ApplicationController
     def create
         binding.pry
         event = Event.create(event_params)
-        #render json: event, status: 201
+        render json: event, status: 201
     end
 
     def index
@@ -16,10 +16,10 @@ class EventsController < ApplicationController
     # end
 
     def destroy
-        binding.pry
         event = Event.find(params[:id])
         event.tasks.destroy_all
         event.destroy
+        render json: event
     end
 
 

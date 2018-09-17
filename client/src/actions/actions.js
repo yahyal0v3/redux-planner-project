@@ -45,7 +45,6 @@ export function createTask(data) {
 }
 
 export function fetchEvents() {
-    debugger
     return (dispatch) => {
         dispatch({ type: 'LOAD_EVENT_REQUEST' })
         return fetch('http://localhost:3001/events')
@@ -83,55 +82,50 @@ export function updateEvent(data) {
 }
 
 export function updateTaskStatus(data, dispatch) {
-    debugger
-        dispatch({ type: 'LOAD_TASK_REQUEST' }) 
-        return fetch(`http://localhost:3001/tasks/${data.id}`, {
-            method: 'PUT',
+    dispatch({ type: 'LOAD_TASK_REQUEST' }) 
+    return fetch(`http://localhost:3001/tasks/${data.id}`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(resp => resp.json())
+    .then(task => {
+        debugger
+        return dispatch({type: "UPDATE_TASK", task: task})})
+    .catch(error => console.log(error))
+}
+
+export function deleteEvent(id) {
+    return (dispatch) => {
+        dispatch({ type: 'LOAD_EVENT_REQUEST' }) 
+        return fetch(`http://localhost:3001/events/${id}`, {
+            method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin':'*',
-                //'Access-Control-Allow-Methods':'PUT',
-                // 'Access-Control-Request-Headers': 'X-Custom-Header',
-                // 'Access-Control-Allow-Credentials':true,
+                'Access-Control-Allow-Origin':'*'
             },
-            body: JSON.stringify(data)
         })
-        .then(resp => {
-            debugger
-            return resp.json()})
-        .then(task => {
-            debugger
-            return dispatch({type: "UPDATE_TASK", id: task.id})})
+        .then(resp => resp.json())
+        .then(event => dispatch({type: "DELETE_EVENT", id: event.id}))
         .catch(error => console.log(error))
-}
-
-export function deleteEvent(id, dispatch) {
-    const proxyurl = "https://cors-anywhere.herokuapp.com/"
-
-    dispatch({ type: 'LOAD_EVENT_REQUEST' }) 
-    debugger
-    return fetch(proxyurl + `http://localhost:3001/events/${id}`, {
-        method: 'DELETE',
-        // headers: {
-        //     Access-Control-Allow-Origin: *
-        // },
-    })
-    .then(resp => {
-        console.log(resp.status)
-        debugger
-        return resp.json()})
-    .then(event => {
-        debugger
-        return dispatch({type: "DELETE_EVENT", id: event.id})})
-    .catch(error => console.log(error))
+    }
 }
 
 export function deleteTask(id) {
     return (dispatch) => {
         dispatch({ type: 'LOAD_TASK_REQUEST' }) 
         return fetch(`http://localhost:3001/tasks/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin':'*'
+            },
         })
         .then(resp => resp.json())
         .then(task => dispatch({type: "DELETE_TASK", id: task.id}))
