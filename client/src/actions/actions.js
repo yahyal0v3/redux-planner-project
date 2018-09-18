@@ -21,9 +21,7 @@ export function createEvent(data) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    }).then(resp => {
-
-        return resp.json()})
+    }).then(resp => resp.json())
     .then(event => alert(`${event.title} has been created!`))
 }
 

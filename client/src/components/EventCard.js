@@ -9,8 +9,8 @@ const EventCard = ({event, countdown, deadline, prepared, handleDelete}) => {
             <h3><NavLink to={`/party-planner/${event.id}`}>{event.title}</NavLink></h3>
             <h3>{deadline}</h3>        
             <p>{event.description}</p>
-            {prepared === null ? <button><NavLink to={`/events/${event.id}/edit`}>Edit</NavLink></button> : null}
-            <button onClick={handleDelete}>Delete</button>
+            {prepared === null ? <NavLink className="button" to={`/events/${event.id}/edit`}>Edit</NavLink> : null}
+            <a className="button" onClick={handleDelete}>Delete</a>
         </div>
     )
 }

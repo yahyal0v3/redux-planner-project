@@ -37,6 +37,15 @@ a {
   text-decoration: none;
 }
 
+input[type=submit], button, a.button {
+  cursor: pointer;
+  font-weight: bold;
+  background-color: white;
+  border: 2px double white;
+  color: #055471;
+  border-radius: 5px;
+}
+
 /* Row Styles */
 
 div.row {
@@ -101,15 +110,6 @@ div.fullForm p {
 div.fullForm label {
   font-size: 1.3em;
   padding-right: 10px;
-}
-
-input[type=submit], button, button a {
-  cursor: pointer;
-  font-weight: bold;
-  background-color: white;
-  border: 2px double white;
-  color: #055471;
-  border-radius: 5px;
 }
 
 /* Header and Footer Styles */
@@ -224,8 +224,9 @@ div.container h3 a:hover {
   color: white;
 }
 
-div.container button {
+div.container a.button {
   float: right;
+  padding: 0px 5px;
 }
 
 .loader {
@@ -271,10 +272,13 @@ div.orangeRow figcaption {
 
 /* Party Planner Styles */
 
-div#eventShow button, div#eventShow button a {
+div#eventShow a.button {
   background-color: #042a75;
   border: 2px solid #0a2b6d;
   color: white;
+  font-family: "Geneva";
+  font-size: 0.9em;
+  padding: 0px 10px;
   margin-bottom: 2em;
 }
 

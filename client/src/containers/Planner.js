@@ -9,22 +9,9 @@ import Tasks from './Tasks';
 
 class Planner extends Component {
 
-
-  //event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))
-
   componentDidMount() {
-    debugger
-    this.props.dispatch(fetchEvents())
+    if (this.props.events.length === 0) this.props.dispatch(fetchEvents())
   }
-
-  // findEvent = () => {
-  //   debugger
-  //   if (this.props.events.length === 0) {
-  //     return fetchEventShow(parseInt(this.props.match.params.id, 10))
-  //   } else {
-  //     return this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))
-  //   }
-  // }
 
 
   render() {

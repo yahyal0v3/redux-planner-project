@@ -9,9 +9,9 @@ const EventShow = ({event, countdown, deadline, prepared, handleDelete}) => {
             {prepared === null ? <h3 className="darkBlue">{countdown}</h3> : <h3 className="darkBlue">{prepared}</h3>}
             <h3>{deadline}</h3>        
             <p>{event.description}</p>
-            {prepared === null ? <button><NavLink to={`/events/${event.id}/edit`}>Edit</NavLink></button> : null}
+            {prepared === null ? <NavLink className="button" to={`/events/${event.id}/edit`}>Edit</NavLink> : null}
             &nbsp;
-            <button onClick={handleDelete}>Delete</button>
+            <a className="button" onClick={handleDelete}>Delete</a>
           </section>
         </div>
     )
