@@ -14,19 +14,17 @@ export function countdown(event_deadline) {
     return countdown
 }
 
-//const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-
 export function createEvent(data) {
-    debugger
     return fetch('http://localhost:3001/events', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            //'X-CSRF-TOKEN': token
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    }).then(resp => resp.json())
-    .then(event => console.log(event))
+    }).then(resp => {
+
+        return resp.json()})
+    .then(event => alert(`${event.title} has been created!`))
 }
 
 export function createTask(data) {

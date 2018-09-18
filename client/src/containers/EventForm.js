@@ -28,10 +28,10 @@ export default class EventForm extends Component {
     handleSubmit = event => {
         event.preventDefault()
         const {deadlineDate, deadlineTime, title, description} = this.state
-        let data = {title: title, description: description.replace('\n', '\\n'), deadline: deadlineDate + "T" + deadlineTime}
-        console.log(data)
-        debugger
+        let data = {title: title, description: description, deadline: deadlineDate + "T" + deadlineTime}
         createEvent(data)
+        this.slide = 1
+        this.setState({deadlineDate: "", deadlineTime: "", title: "", description: ""})
     } 
 
     render() {
