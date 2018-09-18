@@ -67,14 +67,19 @@ export function fetchEvents() {
 // }
 
 export function updateEvent(data) {
+    debugger
     return fetch(`http://localhost:3001/events/${data.id}`, {
-        method: 'PATCH',
+        method: 'PUT',
         headers: {
             'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*'
         },
         body: JSON.stringify(data)
     })
     .then(resp => resp.json())
+    .then(event => alert(`${event.title} has been updated!`))
+    .catch(error => console.log(error))
 }
 
 export function updateTaskStatus(data, dispatch) {

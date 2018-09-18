@@ -6,7 +6,9 @@ import { NavLink } from 'react-router-dom'
 class EventUpdate extends Component {
     
     state = {
-        deadline: "", 
+        id: "",
+        deadlineDate: "",
+        deadlineTime: "", 
         title: "",
         description: ""
     }
@@ -18,8 +20,13 @@ class EventUpdate extends Component {
     initialState = () => {
         if (this.props.events.length !== 0) {
             let event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))
+            debugger
+            let deadlineDate = event.deadline.split('T')[0]
+            let deadlineTime = event.deadline.split('T')[1].split('.')[0]
             this.setState({
-                deadline: event.deadline, 
+                id: event.id,
+                deadlineDate: deadlineDate, 
+                deadlineTime: deadlineTime,
                 title: event.title,
                 description: event.description
             })
@@ -33,9 +40,11 @@ class EventUpdate extends Component {
       }
     
       handleSubmit = event => {
-          event.preventDefault()
-          debugger
-          updateEvent(this.state)
+        event.preventDefault()
+        const {id, deadlineDate, deadlineTime, title, description} = this.state
+        let data = {id: id, title: title, description: description, deadline: deadlineDate + "T" + deadlineTime}
+        updateEvent(data)
+        this.setState({deadlineDate: "", deadlineTime: "", title: "", description: ""})
       } 
 
     render() {
@@ -49,15 +58,16 @@ class EventUpdate extends Component {
               </div>
             )    
         } else {
-            const {deadline, title, description} = this.state
+            const {deadlineDate, deadlineTime, title, description} = this.state
             return (
                 <div className="row fullForm tealRow" id="formRow">
                     <section>
                         <h2>Update Event</h2>
                         <form onSubmit={this.handleSubmit}>
                         <p>
-                            <label for="deadline">Deadline</label>
-                            <input type="datetime-local" name="deadline" value={deadline} onChange={this.handleChange} />
+                            <label>Deadline</label>
+                            <input type="date" name="deadlineDate" value={deadlineDate} onChange={this.handleChange} />
+                            <input type="time" name="deadlineTime" value={deadlineTime} onChange={this.handleChange} />
                         </p><br />
                         <p>
                             <label for="title">Title</label>
