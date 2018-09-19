@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-// import { fetchEventShow } from '../actions/actions'
 import { fetchEvents } from '../actions/actions'
+import { NavLink } from 'react-router-dom'
 
 import TaskForm from './TaskForm';
 import Event from './Event'
@@ -12,7 +12,6 @@ class Planner extends Component {
   componentDidMount() {
     if (this.props.events.length === 0) this.props.dispatch(fetchEvents())
   }
-
 
   render() {
 
@@ -26,20 +25,29 @@ class Planner extends Component {
       )    
     } else {
       const event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))
-      return (
-        <div id="planner">
-          <Event show={true} event={event} />
-          <TaskForm event={event} />
-  
-          <Tasks event_tasks={event.tasks} />
-        </div>
-      )
+
+      if (event === undefined) {
+        return (
+          <div className="row">
+            <section>
+              <h4>This event has been removed. Return to <NavLink to="/events">Events</NavLink></h4>
+            </section>
+          </div>
+        )    
+      } else {
+        return (
+          <div id="planner">
+            <Event show={true} event={event} />
+            <TaskForm event={event} />
+            <Tasks event_tasks={event.tasks} />
+          </div>
+        )
+      }
     }
   }
 }
 
 const mapStateToProps = state => {
-  //debugger
   return {
     events: state.eventsState.events,
     loading: state.eventsState.loading

@@ -30,7 +30,7 @@ export default class Task extends Component {
     handleCheck = () => {
         let taskCopy = {...this.props.task}
         taskCopy.completed = true
-        updateTaskStatus(taskCopy, this.props.dispatch)
+        this.props.dispatch(updateTaskStatus(taskCopy))
     }
 
     handleDelete = () => {
@@ -43,7 +43,7 @@ export default class Task extends Component {
   render() {
 
     function renderCompletionStatus() {
-        if (this.passedDeadline && this.props.task.completed) {
+        if (this.props.task.completed) {
             return (
                 <React.Fragment>
                     <h1 className="completed">Completed</h1>
@@ -81,3 +81,4 @@ export default class Task extends Component {
     )
   }
 }
+

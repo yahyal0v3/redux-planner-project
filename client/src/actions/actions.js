@@ -67,7 +67,6 @@ export function fetchEvents() {
 // }
 
 export function updateEvent(data) {
-    debugger
     return fetch(`http://localhost:3001/events/${data.id}`, {
         method: 'PUT',
         headers: {
@@ -82,22 +81,22 @@ export function updateEvent(data) {
     .catch(error => console.log(error))
 }
 
-export function updateTaskStatus(data, dispatch) {
-    dispatch({ type: 'LOAD_TASK_REQUEST' }) 
-    return fetch(`http://localhost:3001/tasks/${data.id}`, {
-        method: 'PUT',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin':'*'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(resp => resp.json())
-    .then(task => {
-        debugger
-        return dispatch({type: "UPDATE_TASK", task: task})})
-    .catch(error => console.log(error))
+export function updateTaskStatus(data) {
+    return (dispatch) => {
+        dispatch({ type: 'LOAD_TASK_REQUEST' }) 
+        return fetch(`http://localhost:3001/tasks/${data.id}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin':'*'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(resp => resp.json())
+        .then(task => dispatch({type: "UPDATE_TASK", task: task}))
+        .catch(error => console.log(error))
+    }
 }
 
 export function deleteEvent(id) {

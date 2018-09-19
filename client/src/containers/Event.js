@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import EventCard from '../components/EventCard'
 import EventShow from '../components/EventShow'
 
-import { connect } from 'react-redux'
 import { countdown } from '../actions/actions'
 import { deleteEvent } from '../actions/actions'
 
-class Event extends Component {
+export default class Event extends Component {
 
     state = {
         countdown: ""
@@ -46,7 +45,7 @@ class Event extends Component {
 
     handleDelete = () => {
         if (window.confirm('Are you sure you want to delete this event? All tasks will be deleted as well.')) {
-            this.props.deleteEvent(this.props.event.id)
+            this.props.dispatch(deleteEvent(this.props.event.id))
         }
     }
 
@@ -72,17 +71,3 @@ class Event extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-      events: state.eventsState.events,
-      loading: state.eventsState.loading
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        deleteEvent: id => dispatch(deleteEvent(id))
-    }
-  }
-  
-export default connect(mapStateToProps, mapDispatchToProps)(Event)
