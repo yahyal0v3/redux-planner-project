@@ -4,8 +4,8 @@ import { createTask } from '../actions/actions'
 export default class TaskForm extends Component {
 
   state = {
-    completed: false,
-    deadline: "", 
+    deadlineDate: "", 
+    deadlineTime: "", 
     description: "",
     event_id: this.props.event.id
   }
@@ -18,12 +18,14 @@ export default class TaskForm extends Component {
 
   handleSubmit = event => {
       event.preventDefault()
-      debugger
-      createTask(this.state)
+      const {deadlineDate, deadlineTime, description, event_id} = this.state
+      let data = {event_id: event_id, description: description, deadline: deadlineDate + "T" + deadlineTime}
+      this.props.dispatch(createTask(data))
+      this.setState({deadlineDate: "", deadlineTime: "", title: "", description: ""})
   } 
 
   render() {
-    const {deadline, description} = this.state
+    const {deadlineDate, deadlineTime, description} = this.state
 
     return (
       <div className="row fullForm tealRow" id="formRow">
@@ -31,9 +33,10 @@ export default class TaskForm extends Component {
           <h3>Add Tasks for {this.props.event.title}</h3>
           <form onSubmit={this.handleSubmit}>
             <p>
-              <label for="deadline">Deadline</label>
-              <input type="datetime-local" name="deadline" value={deadline} onChange={this.handleChange} 
-              max={this.props.event.deadline} />
+              <label>Deadline</label>
+              <input type="date" name="deadlineDate" value={deadlineDate} onChange={this.handleChange} max={this.props.event.deadline} />
+              <input type="time" name="deadlineTime" value={deadlineTime} onChange={this.handleChange} /> 
+
             </p><br />
             <p>
               <label for="description">Description</label>

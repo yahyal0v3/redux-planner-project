@@ -35,7 +35,7 @@ export default class Task extends Component {
 
     handleDelete = () => {
         if (window.confirm('Are you sure you want to delete this task?')) {
-            deleteTask(this.props.task.id)
+            this.props.dispatch(deleteTask(this.props.task.id))
         }
     }
 

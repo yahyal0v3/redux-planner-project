@@ -38,7 +38,7 @@ class Planner extends Component {
         return (
           <div id="planner">
             <Event show={true} event={event} />
-            <TaskForm event={event} />
+            <TaskForm event={event} dispatch={this.props.dispatch} />
             <Tasks event_tasks={event.tasks} />
           </div>
         )

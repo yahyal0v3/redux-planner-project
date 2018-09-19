@@ -72,8 +72,8 @@ export default class EventForm extends Component {
                           <input type="hidden" name="authenticity_token" value={token} />
                           <p>
                             <label>Deadline</label>
-                            <input type="date" name="deadlineDate" value={deadlineDate} onKeyPress={this.handleKeyPress} onChange={this.handleChange} />
-                            <input type="time" name="deadlineTime" value={deadlineTime} onKeyPress={this.handleKeyPress} onChange={this.handleChange} /> 
+                            <input type="date" name="deadlineDate" value={deadlineDate} onChange={this.handleChange} />
+                            <input type="time" name="deadlineTime" value={deadlineTime} onChange={this.handleChange} /> 
                           </p><br />
                           <p>
                             <label for="title">Title</label>
