@@ -10,6 +10,10 @@ export default class TaskForm extends Component {
     event_id: this.props.event.id
   }
 
+  eventDeadlineDate = this.props.event.deadline.split('T')[0]
+
+  eventDeadlineTime = this.props.event.deadline.split('T')[1].split('.')[0]
+
   handleChange = event => {
     this.setState({
         [event.target.name]: event.target.value
@@ -34,8 +38,8 @@ export default class TaskForm extends Component {
           <form onSubmit={this.handleSubmit}>
             <p>
               <label>Deadline</label>
-              <input type="date" name="deadlineDate" value={deadlineDate} onChange={this.handleChange} max={this.props.event.deadline} />
-              <input type="time" name="deadlineTime" value={deadlineTime} onChange={this.handleChange} /> 
+              <input type="date" name="deadlineDate" value={deadlineDate} onChange={this.handleChange} max={this.eventDeadlineDate} />
+              <input type="time" name="deadlineTime" value={deadlineTime} onChange={this.handleChange} max={this.eventDeadlineTime} /> 
 
             </p><br />
             <p>

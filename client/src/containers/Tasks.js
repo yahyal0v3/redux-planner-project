@@ -22,7 +22,7 @@ class Tasks extends Component {
                 <div className="list">
                     <h2>Tasks</h2>
                     <section className="flexJustify">
-                        {this.props.tasks.map(task => <Task key={task.id} task={task} dispatch={this.props.dispatch} />)}
+                        {this.props.tasks.map(task => <Task key={task.id} task={task} event={this.props.event} dispatch={this.props.dispatch} />)}
                     </section>
                 </div>
             )

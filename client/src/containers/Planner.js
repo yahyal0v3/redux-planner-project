@@ -25,6 +25,7 @@ class Planner extends Component {
       )    
     } else {
       const event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))
+      const passedDeadline = new Date(event.deadline) <= new Date() ? true : false
 
       if (event === undefined) {
         return (
@@ -34,12 +35,22 @@ class Planner extends Component {
             </section>
           </div>
         )    
-      } else {
+      } 
+      else if (passedDeadline === true) {
+        return (
+          <div id="planner">
+            <Event show={true} event={event} />
+            <Tasks event_tasks={event.tasks} event={event} />
+          </div>
+        )
+      } 
+      else {
+  
         return (
           <div id="planner">
             <Event show={true} event={event} />
             <TaskForm event={event} dispatch={this.props.dispatch} />
-            <Tasks event_tasks={event.tasks} />
+            <Tasks event_tasks={event.tasks} event={event} />
           </div>
         )
       }

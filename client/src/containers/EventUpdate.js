@@ -20,7 +20,6 @@ class EventUpdate extends Component {
     initialState = () => {
         if (this.props.events.length !== 0) {
             let event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))
-            debugger
             let deadlineDate = event.deadline.split('T')[0]
             let deadlineTime = event.deadline.split('T')[1].split('.')[0]
             this.setState({

@@ -55,4 +55,4 @@ x-task deadline has to be before event
 x-update event form
 
 x-delete confirmation alert
--fix horizontal scroll
+x-fix horizontal scroll
