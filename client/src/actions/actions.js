@@ -15,7 +15,7 @@ export function countdown(event_deadline) {
 }
 
 export function createEvent(data) {
-    return fetch('http://localhost:3001/events', {
+    return fetch('/events', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ export function createEvent(data) {
 export function createTask(data) {
     return (dispatch) => {
         dispatch({ type: 'LOAD_TASK_REQUEST' }) 
-        return fetch(`http://localhost:3001/tasks`, {
+        return fetch(`/tasks`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ export function createTask(data) {
 export function fetchEvents() {
     return (dispatch) => {
         dispatch({ type: 'LOAD_EVENT_REQUEST' })
-        return fetch('http://localhost:3001/events')
+        return fetch('/events')
         .then(resp => resp.json())
         .then(events => dispatch({type: "ADD_EVENTS", payload: events}))
         .catch(error => console.log(error))
@@ -54,7 +54,7 @@ export function fetchEvents() {
 //     debugger
 //     return (dispatch) => {
 //         dispatch({ type: 'LOAD_EVENT_REQUEST' })
-//         return fetch(`http://localhost:3001/events/${id}`, {cache: "no-store"})
+//         return fetch(`/events/${id}`, {cache: "no-store"})
 //         .then(resp => {
 //             debugger
 //             return resp.json()})
@@ -67,7 +67,7 @@ export function fetchEvents() {
 // }
 
 export function updateEvent(data) {
-    return fetch(`http://localhost:3001/events/${data.id}`, {
+    return fetch(`/events/${data.id}`, {
         method: 'PUT',
         headers: {
             'Accept': 'application/json',
@@ -84,7 +84,7 @@ export function updateEvent(data) {
 export function updateTaskStatus(data) {
     return (dispatch) => {
         dispatch({ type: 'LOAD_TASK_REQUEST' }) 
-        return fetch(`http://localhost:3001/tasks/${data.id}`, {
+        return fetch(`/tasks/${data.id}`, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -102,7 +102,7 @@ export function updateTaskStatus(data) {
 export function deleteEvent(id) {
     return (dispatch) => {
         dispatch({ type: 'LOAD_EVENT_REQUEST' }) 
-        return fetch(`http://localhost:3001/events/${id}`, {
+        return fetch(`/events/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -119,7 +119,7 @@ export function deleteEvent(id) {
 export function deleteTask(id) {
     return (dispatch) => {
         dispatch({ type: 'LOAD_TASK_REQUEST' }) 
-        return fetch(`http://localhost:3001/tasks/${id}`, {
+        return fetch(`/tasks/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',

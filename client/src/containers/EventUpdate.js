@@ -7,8 +7,7 @@ class EventUpdate extends Component {
     
     state = {
         id: "",
-        deadlineDate: "",
-        deadlineTime: "", 
+        deadline: "", 
         title: "",
         description: ""
     }
@@ -20,12 +19,9 @@ class EventUpdate extends Component {
     initialState = () => {
         if (this.props.events.length !== 0) {
             let event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))
-            let deadlineDate = event.deadline.split('T')[0]
-            let deadlineTime = event.deadline.split('T')[1].split('.')[0]
             this.setState({
                 id: event.id,
-                deadlineDate: deadlineDate, 
-                deadlineTime: deadlineTime,
+                deadline: event.deadline,
                 title: event.title,
                 description: event.description
             })
@@ -40,10 +36,8 @@ class EventUpdate extends Component {
     
       handleSubmit = event => {
         event.preventDefault()
-        const {id, deadlineDate, deadlineTime, title, description} = this.state
-        let data = {id: id, title: title, description: description, deadline: deadlineDate + "T" + deadlineTime}
-        updateEvent(data)
-        this.setState({deadlineDate: "", deadlineTime: "", title: "", description: ""})
+        updateEvent(this.state)
+        this.setState({deadline: "", title: "", description: ""})
       } 
 
     render() {
@@ -57,7 +51,7 @@ class EventUpdate extends Component {
               </div>
             )    
         } else {
-            const {deadlineDate, deadlineTime, title, description} = this.state
+            const {deadline, title, description} = this.state
             return (
                 <div className="row fullForm tealRow" id="formRow">
                     <section>
@@ -65,8 +59,7 @@ class EventUpdate extends Component {
                         <form onSubmit={this.handleSubmit}>
                         <p>
                             <label>Deadline</label>
-                            <input type="date" name="deadlineDate" value={deadlineDate} onChange={this.handleChange} />
-                            <input type="time" name="deadlineTime" value={deadlineTime} onChange={this.handleChange} />
+                            <input type="datetime-local" name="deadline" value={deadline} onChange={this.handleChange} />
                         </p><br />
                         <p>
                             <label for="title">Title</label>

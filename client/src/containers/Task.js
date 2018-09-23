@@ -41,6 +41,7 @@ export default class Task extends Component {
 
 
   render() {
+    debugger
 
     function renderButtons() {
         if (this.passedDeadline(this.props.event.deadline) === false) {

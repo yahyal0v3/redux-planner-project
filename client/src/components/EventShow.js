@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const EventShow = ({event, countdown, deadline, prepared, handleDelete}) => {
     return (
-        <div class="row orangeRow" id="eventShow">
+        <div className="row orangeRow" id="eventShow">
           <section>
             <h1>{event.title}</h1>
             {prepared === null ? <h3 className="darkBlue">{countdown}</h3> : <h3 className="darkBlue">{prepared}</h3>}

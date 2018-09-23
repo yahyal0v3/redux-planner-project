@@ -1,14 +1,12 @@
 import React, { Component   } from 'react'
 import { createEvent } from '../actions/actions'
-import $ from 'jquery'
 
 export default class EventForm extends Component {
     
     slide = 1
     
     state = {
-        deadlineDate: "", 
-        deadlineTime: "",
+        deadline: "",
         title: "",
         description: ""
     }
@@ -27,25 +25,22 @@ export default class EventForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        const {deadlineDate, deadlineTime, title, description} = this.state
-        let data = {title: title, description: description, deadline: deadlineDate + "T" + deadlineTime}
-        createEvent(data)
+        createEvent(this.state)
         this.slide = 1
-        this.setState({deadlineDate: "", deadlineTime: "", title: "", description: ""})
+        this.setState({deadline: "", title: "", description: ""})
     } 
 
     render() {
-        const token = $('meta[name="csrf-token"]').attr('content');
 
         function renderForm() {
-            const {deadlineDate, deadlineTime, title, description} = this.state
+            const {deadline, title, description} = this.state
+
             if (this.slide === 1) { 
                 return (
                     <div className="formFragment">
                         <h2>Make a Deadline</h2>
-                        <input type="date" name="deadlineDate" value={deadlineDate} onKeyPress={this.handleKeyPress} onChange={this.handleChange} />
-                        <input type="time" name="deadlineTime" value={deadlineTime} onKeyPress={this.handleKeyPress} onChange={this.handleChange} />       
-                    </div>
+                        <input type="datetime" name="deadline" value={deadline} onKeyPress={this.handleKeyPress} onChange={this.handleChange} />
+                         </div>
                 )
           
             } else if (this.slide === 2) {
@@ -68,12 +63,10 @@ export default class EventForm extends Component {
                 return (
                     <div className="fullForm">
                         <h2>Is This Your Event?</h2>
-                        <form onSubmit={this.handleSubmit} encType="form-data">
-                          <input type="hidden" name="authenticity_token" value={token} />
+                        <form onSubmit={this.handleSubmit}>
                           <p>
                             <label>Deadline</label>
-                            <input type="date" name="deadlineDate" value={deadlineDate} onChange={this.handleChange} />
-                            <input type="time" name="deadlineTime" value={deadlineTime} onChange={this.handleChange} /> 
+                            <input type="datetime-local" name="deadline" value={deadline} onChange={this.handleChange} />
                           </p><br />
                           <p>
                             <label for="title">Title</label>
