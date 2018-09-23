@@ -31,7 +31,7 @@ export default class TaskForm extends Component {
           <form onSubmit={this.handleSubmit}>
             <p>
               <label>Deadline</label>
-              <input type="datetime-local" name="deadline" value={deadline} onChange={this.handleChange} max={this.props.event.deadline} />
+              <input type="datetime-local" name="deadline" value={deadline} onChange={this.handleChange} max={this.props.event.deadline.split('.')[0]} />
             </p><br />
             <p>
               <label for="description">Description</label>

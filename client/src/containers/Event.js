@@ -11,7 +11,7 @@ export default class Event extends Component {
         countdown: ""
     }
 
-    deadline = new Date(this.props.event.deadline).toLocaleString()
+    deadline = new Date(this.props.event.deadline.split('.')[0]).toLocaleString()
 
     prepared = null
 
@@ -26,12 +26,12 @@ export default class Event extends Component {
 
     countdownTimer = () => {
         this.setState({
-            countdown: countdown(this.props.event.deadline)
+            countdown: countdown(this.props.event.deadline.split('.')[0])
         })
     }
 
     checkPreparedness = () => {
-        let passedDeadline = new Date(this.props.event.deadline) <= new Date() ? true : false
+        let passedDeadline = new Date(this.props.event.deadline.split('.')[0]) <= new Date() ? true : false
         let completedTasks = false
         if (this.props.event.tasks.length !== 0) {
             completedTasks = this.props.event.tasks.every(task => task.completed === true)

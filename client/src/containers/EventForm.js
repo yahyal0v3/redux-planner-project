@@ -39,7 +39,7 @@ export default class EventForm extends Component {
                 return (
                     <div className="formFragment">
                         <h2>Make a Deadline</h2>
-                        <input type="datetime" name="deadline" value={deadline} onKeyPress={this.handleKeyPress} onChange={this.handleChange} />
+                        <input type="datetime-local" name="deadline" value={deadline} onKeyPress={this.handleKeyPress} onChange={this.handleChange} />
                          </div>
                 )
           

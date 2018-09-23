@@ -9,7 +9,7 @@ export default class Task extends Component {
         countdown: ""
     }
 
-    deadlineString = new Date(this.props.task.deadline).toLocaleString()
+    deadlineString = new Date(this.props.task.deadline.split('.')[0]).toLocaleString()
 
     componentDidMount() {
         this.interval = setInterval(this.countdownTimer, 1000)
@@ -23,7 +23,7 @@ export default class Task extends Component {
 
     countdownTimer = () => {
         this.setState({
-            countdown: countdown(this.props.task.deadline)
+            countdown: countdown(this.props.task.deadline.split('.')[0])
         })
     }
 
@@ -41,10 +41,9 @@ export default class Task extends Component {
 
 
   render() {
-    debugger
 
     function renderButtons() {
-        if (this.passedDeadline(this.props.event.deadline) === false) {
+        if (this.passedDeadline(this.props.event.deadline.split('.')[0]) === false) {
             return (
                 <React.Fragment>
                     <button onClick={this.handleCheck}>Check</button>
@@ -63,7 +62,7 @@ export default class Task extends Component {
                     <p>{this.props.task.description}</p>
                 </React.Fragment>
             )
-        } else if (this.passedDeadline(this.props.task.deadline) && this.props.task.completed === false) {
+        } else if (this.passedDeadline(this.props.task.deadline.split('.')[0]) && this.props.task.completed === false) {
             return (
                 <React.Fragment>
                     <h1 className="incompleted">Incomplete!</h1>
