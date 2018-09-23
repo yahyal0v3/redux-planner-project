@@ -157,9 +157,11 @@ div#headerImg img {
 }
 
 div#headerImg p {
-	position: absolute;
-	top: 400px;
-	left: 560px;
+	left: 0;
+  position: absolute;
+  text-align: center;
+  top: 400px;
+  width: 100%;
 	color: white;
 	font: 2em/0em 'Century Gothic', sans-serif;
 } 
