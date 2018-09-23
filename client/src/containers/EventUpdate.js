@@ -21,7 +21,7 @@ class EventUpdate extends Component {
             let event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))
             this.setState({
                 id: event.id,
-                deadline: event.deadline,
+                deadline: event.deadline.split('.')[0],
                 title: event.title,
                 description: event.description
             })

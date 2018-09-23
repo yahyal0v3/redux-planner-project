@@ -25,7 +25,7 @@ export default class TaskForm extends Component {
     const {deadline, description} = this.state
 
     return (
-      <div className="row fullForm tealRow" id="formRow">
+      <div className="row fullForm tealRow">
         <section>
           <h3>Add Tasks for {this.props.event.title}</h3>
           <form onSubmit={this.handleSubmit}>

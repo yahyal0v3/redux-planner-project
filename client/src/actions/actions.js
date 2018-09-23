@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch'
 export function countdown(event_deadline) {
     let now = new Date().getTime()
     let deadline = new Date(event_deadline).getTime()
-    let distance = deadline - now
+    let distance = deadline > now ? deadline - now : now - deadline
     
     let days = Math.floor(distance / (1000 * 60 * 60 * 24))
     let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))

@@ -84,7 +84,7 @@ export default class EventForm extends Component {
         }
 
         return (
-            <div className="row tealRow" id="formRow">
+            <div className="row tealRow" id="plan">
               <section>
                 {renderForm.call(this)}
               </section>
