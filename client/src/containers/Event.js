@@ -4,8 +4,9 @@ import EventShow from '../components/EventShow'
 
 import { countdown } from '../actions/actions'
 import { deleteEvent } from '../actions/actions'
+import { connect } from 'react-redux'
 
-export default class Event extends Component {
+class Event extends Component {
 
     state = {
         countdown: ""
@@ -70,4 +71,13 @@ export default class Event extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+      events: state.eventsState.events,
+      loading: state.eventsState.loading
+    }
+}
+  
+  export default connect(mapStateToProps)(Event)
 

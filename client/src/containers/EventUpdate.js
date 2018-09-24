@@ -34,11 +34,17 @@ class EventUpdate extends Component {
         })
       }
     
-      handleSubmit = event => {
+    handleSubmit = event => {
         event.preventDefault()
-        updateEvent(this.state)
-        this.setState({deadline: "", title: "", description: ""})
-      } 
+        let emptyValues = Object.keys(this.state).some(value => this.state[value] === "")
+
+        if (emptyValues) {
+            alert("Please fill out deadline and title.")
+        } else {
+            updateEvent(this.state)
+            this.setState({deadline: "", title: "", description: ""})
+        }
+    } 
 
     render() {
 

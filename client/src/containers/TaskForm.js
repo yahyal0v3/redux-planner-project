@@ -17,8 +17,14 @@ export default class TaskForm extends Component {
 
   handleSubmit = event => {
       event.preventDefault()
-      this.props.dispatch(createTask(this.state))
-      this.setState({deadline: "", title: "", description: ""})
+      let emptyValues = Object.keys(this.state).some(value => this.state[value] === "")
+        if (emptyValues) {
+            alert("Please fill out all inputs.")
+        } else {
+        this.props.dispatch(createTask(this.state))  
+        }
+
+      this.setState({deadline: "", description: ""})
   } 
 
   render() {

@@ -25,7 +25,6 @@ class Planner extends Component {
       )    
     } else {
       const event = this.props.events.find(event => event.id === parseInt(this.props.match.params.id, 10))
-      const passedDeadline = new Date(event.deadline) <= new Date() ? true : false
 
       if (event === undefined) {
         return (
@@ -36,7 +35,7 @@ class Planner extends Component {
           </div>
         )    
       } 
-      else if (passedDeadline === true) {
+      else if (new Date(event.deadline) <= new Date()) {
         return (
           <div id="planner">
             <Event show={true} event={event} />

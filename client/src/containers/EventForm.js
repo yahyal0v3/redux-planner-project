@@ -25,7 +25,14 @@ export default class EventForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        createEvent(this.state)
+        let emptyValues = Object.keys(this.state).some(value => this.state[value] === "")
+
+        if (emptyValues) {
+            alert("Please fill out deadline and title.")
+        } else {
+            createEvent(this.state)   
+        }
+
         this.slide = 1
         this.setState({deadline: "", title: "", description: ""})
     } 
