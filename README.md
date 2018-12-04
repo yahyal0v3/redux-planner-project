@@ -9,11 +9,11 @@ To use this app, clone it, install dependencies, create the database, and then r
 * This application must be used in a browser that supports datetime-local input, like Google Chrome.
 
 # Install Dependencies
-*cd react-planner-project
-*bundle install
-*cd client
-*npm install
-*cd ..
+* cd react-planner-project
+* bundle install
+* cd client
+* npm install
+* cd ..
 
 # Create Database
 rake db:migrate
