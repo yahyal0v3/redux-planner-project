@@ -2,7 +2,7 @@
 Welcome to react-planner-project! This web application is built with react-redux and a rails API. It is an event/ party planning app that allows the user to create events, and then create tasks for the events. Tasks have deadlines that must be completed before the event. 
 
 ## Usage
-To use this app, clone it, install dependencies, create the database, and then run the server. For more detailed instruction, follow the steps in the section below.  
+To use this app, clone it, install dependencies, create the database, and then run the server. For more detailed instruction, follow the steps in the sections below.  
 
 * To create events, use the form on the homepage. Type the event's deadline in the first form field and then click enter to move on to the next field.
 * To create tasks for an event, go to the events page and click the name of the event. This should take you to the event's show page where there is a task creation form.
@@ -16,10 +16,10 @@ To use this app, clone it, install dependencies, create the database, and then r
 * cd ..
 
 ## Create Database
-rake db:migrate
+Run rake db:migrate
 
 ## Run Server
-rake start
+Run rake start
 
 
 ## Contributing
