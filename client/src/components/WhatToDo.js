@@ -8,11 +8,11 @@ const WhatToDo = props => {
             <h2>What To Do</h2>
             <div>
                 <figure>
-                    <img src="http://i66.tinypic.com/1555509.jpg" alt="" />
+                    <img src="https://i.imgur.com/nhnv86W.png" alt="" width="150" />
                     <figcaption>Create an Event</figcaption>
                 </figure>
                 <figure>
-                    <img src="http://i67.tinypic.com/2n6avj5.jpg" alt="" />
+                    <img src="https://i.imgur.com/UO3ZflI.png" alt="" width="100" />
                     <figcaption>Plan it Out</figcaption>
                 </figure>
                 <figure>

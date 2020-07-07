@@ -8,7 +8,7 @@ export default class Header extends Component {
             <Navbar />
 
             <div id="headerImg">
-              <img src="http://i68.tinypic.com/jihyjp.jpg" alt="" />
+              <img src="https://i.imgur.com/hdSyxIQ.jpg" alt="" />
               <p>Be a guest at your next party.</p>
             </div>
           </div>
